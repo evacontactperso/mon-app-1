@@ -17,7 +17,7 @@ export default function FormationEnLignePage() {
   const c = formationEnLigneContent;
 
   return (
-    <div className="overflow-x-hidden bg-[#FAF8F5]">
+    <div className="overflow-x-clip bg-[#FAF8F5]">
       <FadeIn>
         <FormationHero
           badge={c.hero.badge}

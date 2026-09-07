@@ -5,7 +5,7 @@ import { ContactProposalContactLeft } from "@/app/components/site/ContactProposa
 
 export default function ContactPage() {
   return (
-    <div className="overflow-x-hidden bg-[#FAF8F5]">
+    <div className="overflow-x-clip bg-[#FAF8F5]">
       <FadeIn eager>
         <ContactProposalContactLeft />
       </FadeIn>

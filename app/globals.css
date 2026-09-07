@@ -71,11 +71,18 @@
 
 html {
   scroll-behavior: auto;
-  overflow-x: hidden;
 }
 
+/* Ne pas mettre overflow-x:hidden sur html/body : ça bloque le scroll tactile
+   (surtout mobile). On clippe ailleurs (wrapper layout). */
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  overscroll-behavior-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Empêche le focus a11y de recaler le viewport sur le h1 du hero */
@@ -85,13 +92,6 @@ main {
 
 main h1 {
   scroll-margin-top: 0;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body), system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
 }
 
 /* Titres et sous-titres : police dédiée (Plus Jakarta Sans) */

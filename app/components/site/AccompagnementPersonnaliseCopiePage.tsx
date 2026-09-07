@@ -24,7 +24,7 @@ export default function AccompagnementPersonnaliseCopiePage() {
   const c = accompagnementPersonnaliseCopieContent;
 
   return (
-    <div className="overflow-x-hidden bg-[#FAF8F5]">
+    <div className="overflow-x-clip bg-[#FAF8F5]">
       <FadeIn>
         <AccompagnementCopieHero
           badge={c.hero.badge}

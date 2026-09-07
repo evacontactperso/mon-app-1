@@ -14,7 +14,7 @@ export default function AccompagnementPersonnalisePage() {
   const c = accompagnementPersonnaliseContent;
 
   return (
-    <div className="overflow-x-hidden bg-[#FAF8F5]">
+    <div className="overflow-x-clip bg-[#FAF8F5]">
       <FadeIn eager>
         <AccompagnementHero
           title={c.hero.title}

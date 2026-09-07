@@ -257,8 +257,8 @@ export const accompagnementPersonnaliseContent = {
       {
         slug: "pack-8h",
         title: "Pack 8h — Suivi renforcé",
-        price: "549 €",
-        rate: "soit 69 €/h",
+        price: "632 €",
+        rate: "soit 79 €/h",
         description:
           "Pour accompagner l'élève dans la durée, installer de nouvelles habitudes et suivre ses progrès semaine après semaine.",
         idealFor:

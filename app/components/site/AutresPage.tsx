@@ -11,7 +11,7 @@ export default function AutresPage() {
   const c = accompagnementPersonnaliseContent;
 
   return (
-    <div className="overflow-x-hidden bg-[#FAF8F5]">
+    <div className="overflow-x-clip bg-[#FAF8F5]">
       <FadeIn>
         <CoachingSessionsGridSection
           title={c.sessions.title}

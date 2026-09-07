@@ -110,7 +110,7 @@ function LogoM({ className = "", color }: { className?: string; color: string })
 function ColorStripe({ color }: { color: string }) {
   return (
     <div
-      className="relative min-h-[6rem] lg:min-h-[88svh]"
+      className="relative hidden min-h-[6rem] lg:block lg:min-h-[88svh]"
       style={{ backgroundColor: color }}
       aria-hidden
     />
@@ -175,10 +175,10 @@ export default function OfferSplitHero({
   const theme = ACCENT[accent];
 
   return (
-    <section className="relative grid min-h-[88svh] w-full overflow-hidden lg:grid-cols-[minmax(2.75rem,5vw)_minmax(0,1fr)_minmax(2.75rem,5vw)]">
+    <section className="relative grid w-full overflow-x-clip lg:min-h-[88svh] lg:grid-cols-[minmax(2.75rem,5vw)_minmax(0,1fr)_minmax(2.75rem,5vw)]">
       <ColorStripe color={theme.solid} />
       <div
-        className={`relative flex min-h-[46svh] flex-col justify-center bg-gradient-to-br ${theme.softFrom} via-white to-white px-4 py-12 sm:py-16 md:px-6 lg:min-h-[88svh] lg:px-8`}
+        className={`relative flex flex-col justify-center bg-gradient-to-br ${theme.softFrom} via-white to-white px-4 py-14 sm:py-16 md:px-6 lg:min-h-[88svh] lg:px-8`}
       >
         <div
           className={`pointer-events-none absolute -right-16 top-10 h-64 w-64 rounded-full ${theme.glow} opacity-40 blur-3xl md:h-96 md:w-96`}
@@ -198,7 +198,6 @@ export default function OfferSplitHero({
             {eyebrow}
           </p>
           <h1
-            tabIndex={-1}
             className="mx-auto mt-4 text-balance text-[1.7rem] font-extrabold leading-[1.25] tracking-tight text-[#0B0B0B] outline-none sm:mt-5 sm:text-3xl md:text-4xl lg:text-[2.85rem]"
             style={{ maxWidth: `min(100%, ${titleMaxCh}ch)` }}
           >

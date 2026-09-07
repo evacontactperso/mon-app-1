@@ -15,23 +15,11 @@ export default function ScrollToTop() {
       history.scrollRestoration = "manual";
     }
 
-    const reset = () => {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    };
+    // Un seul reset immédiat — éviter les resets répétés qui "recollent" en haut
+    // pendant que l'utilisateur commence à scroller.
+    window.scrollTo(0, 0);
 
-    reset();
-    const raf = requestAnimationFrame(() => {
-      reset();
-      requestAnimationFrame(reset);
-    });
-    const t = window.setTimeout(reset, 0);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.clearTimeout(t);
-    };
+    return undefined;
   }, [pathname]);
 
   return null;

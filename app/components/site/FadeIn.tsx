@@ -53,8 +53,8 @@ export default function FadeIn({
     <div
       ref={ref}
       id={id}
-      className={`transition-all duration-700 ease-out ${
-        visible ? "opacity-100 translate-y-0 fade-in-visible" : "opacity-0 translate-y-6"
+      className={`transition-opacity duration-700 ease-out ${
+        visible ? "opacity-100 fade-in-visible" : "opacity-0"
       } ${className}`}
       style={{ transitionDelay: visible && !eager ? `${delay}ms` : undefined }}
     >

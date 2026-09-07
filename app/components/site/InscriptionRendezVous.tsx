@@ -71,7 +71,6 @@ const PRICING = {
   availability: "Places limitées",
   price: "39 €",
   priceUnit: "de l'heure",
-  rateDetail: "Inscription pour 1 trimestre",
   includes: [
     "Méthode claire appliquée à ses vrais cours",
     "Outil concrètement réutilisable dès la semaine suivante",
@@ -273,7 +272,6 @@ function PricingCard({ className = "" }: { className?: string }) {
         </p>
         <p className="text-sm font-medium text-[#515154] md:text-base">{PRICING.priceUnit}</p>
       </div>
-      <p className="mt-2 text-sm text-[#515154]">{PRICING.rateDetail}</p>
 
       <div className="my-6 h-px bg-slate-200/80" />
 
