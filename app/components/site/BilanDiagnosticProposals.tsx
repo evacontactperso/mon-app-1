@@ -133,7 +133,7 @@ function BilanRadarChart({
   return (
     <div
       ref={chartRef}
-      className="relative mx-auto mt-14 aspect-square w-full max-w-2xl px-2 sm:px-4"
+      className="relative mx-auto mt-14 mb-12 aspect-square w-full max-w-2xl px-2 sm:mb-0 sm:px-4"
     >
       <svg
         viewBox="0 0 100 100"
@@ -345,7 +345,7 @@ export default function BilanDiagnosticMixSection({
       <div className="relative mt-8 md:mt-10">
         <div
           ref={scrollerRef}
-          className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:px-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex flex-col gap-4 px-5 pb-4 md:flex-row md:snap-x md:snap-mandatory md:overflow-x-auto md:px-8 md:pr-16 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {rows.map((row, index) => {
             const tone = TONES[index % TONES.length];
@@ -357,7 +357,7 @@ export default function BilanDiagnosticMixSection({
                   cardRefs.current[index] = el;
                 }}
                 onClick={() => selectFromRadar(index)}
-                className="w-[min(88vw,28rem)] shrink-0 cursor-pointer snap-center overflow-hidden rounded-[28px] border border-white/15 bg-white/[0.03]"
+                className="w-full cursor-pointer overflow-hidden rounded-[28px] border border-white/15 bg-white/[0.03] md:w-[min(88vw,28rem)] md:shrink-0 md:snap-center"
               >
                 <div
                   className="px-6 py-8 text-white"
@@ -382,7 +382,7 @@ export default function BilanDiagnosticMixSection({
           type="button"
           onClick={() => selectFromRadar((selected + 1) % rows.length)}
           aria-label="Carte suivante"
-          className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-[#0B0B0B]/90 text-lg text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition hover:border-white/45 hover:bg-[#141416] md:right-6 md:h-11 md:w-11"
+          className="absolute right-3 top-1/2 z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 bg-[#0B0B0B]/90 text-lg text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition hover:border-white/45 hover:bg-[#141416] md:right-6 md:flex md:h-11 md:w-11"
         >
           <span aria-hidden>→</span>
         </button>

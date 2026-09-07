@@ -60,12 +60,10 @@ function FieldBlock({
   text: string;
 }) {
   return (
-    <div>
-      <p className="text-[15px] font-bold leading-none text-white md:text-base">{label}</p>
-      <p className="mt-1.5 text-sm font-normal leading-relaxed text-white/65 md:text-[15px]">
-        {stripStars(text)}
-      </p>
-    </div>
+    <p className="text-sm leading-relaxed md:text-[15px]">
+      <span className="font-bold text-white">{label}</span>
+      <span className="font-normal text-white/65"> - {stripStars(text)}</span>
+    </p>
   );
 }
 
@@ -107,8 +105,8 @@ export function AgendaProposalTourneePlus({
           const tone = TONES[index % TONES.length];
           return (
             <li key={week.weekend} className="relative py-9 last:pb-0 md:py-11">
-              <div className="grid grid-cols-[2.5rem_1fr] gap-x-4 md:grid-cols-[3rem_minmax(8rem,auto)_1fr] md:gap-x-10">
-                <div className="relative z-10 flex justify-center self-center">
+              <div className="grid grid-cols-[2.5rem_1fr] items-start gap-x-4 md:grid-cols-[3rem_minmax(10.5rem,auto)_1fr] md:items-center md:gap-x-8">
+                <div className="relative z-10 flex justify-center pt-1 md:pt-0">
                   <span
                     className="flex h-9 w-9 items-center justify-center rounded-full text-[11px] font-extrabold text-white md:h-11 md:w-11 md:text-xs"
                     style={{
@@ -120,29 +118,30 @@ export function AgendaProposalTourneePlus({
                   </span>
                 </div>
 
-                <div className="self-center">
-                  <p className="flex items-baseline gap-2 font-[family-name:var(--font-heading)] leading-none tracking-tight text-white">
-                    <span className="text-sm font-extrabold uppercase tracking-[0.14em] text-white/55 md:text-base">
+                <div className="min-w-0">
+                  <p className="flex flex-wrap items-baseline gap-x-2 font-[family-name:var(--font-heading)] leading-none tracking-tight">
+                    <span className="text-base font-semibold uppercase tracking-normal text-white/65 md:text-lg">
                       WK
                     </span>
-                    <span className="text-3xl font-extrabold md:text-4xl">{date.range}</span>
+                    <span className="text-2xl font-extrabold text-white md:text-[1.75rem]">
+                      {date.range}
+                    </span>
+                    <span className="text-base font-semibold capitalize tracking-normal text-white/65 md:text-lg">
+                      {date.month.toLowerCase()}
+                    </span>
                   </p>
                 </div>
 
-                <p className="col-start-2 row-start-2 mt-2 text-[10px] font-bold uppercase tracking-[0.22em] text-white/50">
-                  {date.month}
-                </p>
-
-                <h3 className="col-start-2 row-start-3 mt-3 min-w-0 self-center text-xl font-extrabold leading-snug text-white md:col-start-3 md:row-start-1 md:mt-0 md:text-2xl">
+                <h3 className="col-start-2 mt-3 min-w-0 text-xl font-extrabold leading-snug text-white md:col-start-3 md:mt-0 md:text-2xl">
                   {week.theme}
                 </h3>
               </div>
 
-              <div className="mt-5 space-y-4 pl-[calc(2.5rem+1rem)] md:pl-[calc(3rem+2.5rem)]">
+              <div className="mt-5 space-y-4 pl-[calc(2.5rem+0.75rem)] sm:pl-[calc(2.5rem+1rem)] md:pl-[calc(3rem+2.5rem)]">
                 <FieldBlock label={rowLabels.skills} text={week.skills} />
                 <FieldBlock label={rowLabels.activities} text={week.activities} />
                 <span
-                  className="inline-flex max-w-full rounded-full px-3.5 py-1.5 text-xs font-semibold md:text-sm"
+                  className="inline-flex max-w-full flex-wrap whitespace-normal rounded-2xl px-3.5 py-1.5 text-left text-xs font-semibold leading-snug md:rounded-full md:text-sm"
                   style={{
                     backgroundColor: `${tone.ink}33`,
                     boxShadow: `inset 0 0 0 1px ${tone.ink}55`,

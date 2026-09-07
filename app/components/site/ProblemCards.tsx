@@ -152,17 +152,10 @@ export default function ProblemCards({
             <div className={`hidden gap-3 md:grid md:grid-cols-5 md:gap-4 ${stagger ? "stagger-children" : ""}`}>
               {cards.map((card, i) => renderCard(card, i))}
             </div>
-            <div className="md:hidden">
-              <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {cards.map((card, i) => (
-                  <div
-                    key={card.title}
-                    className="w-[min(78vw,260px)] shrink-0 snap-center"
-                  >
-                    {renderCard(card, i, true)}
-                  </div>
-                ))}
-              </div>
+            <div className="space-y-4 md:hidden">
+              {cards.map((card, i) => (
+                <div key={card.title}>{renderCard(card, i, true)}</div>
+              ))}
             </div>
           </>
         ) : (

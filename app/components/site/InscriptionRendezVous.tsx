@@ -69,7 +69,8 @@ const FEATURE_CARDS: FeatureCard[] = [
 
 const PRICING = {
   availability: "Places limitées",
-  price: "399 €",
+  price: "39 €",
+  priceUnit: "de l'heure",
   rateDetail: "Inscription pour 1 trimestre",
   includes: [
     "Méthode claire appliquée à ses vrais cours",
@@ -266,9 +267,12 @@ function PricingCard({ className = "" }: { className?: string }) {
         {PRICING.availability}
       </div>
 
-      <p className="mt-5 text-5xl font-extrabold tracking-tight text-[#0B0B0B] md:text-6xl">
-        {PRICING.price}
-      </p>
+      <div className="mt-5 flex items-baseline gap-2.5">
+        <p className="text-5xl font-extrabold tracking-tight text-[#0B0B0B] md:text-6xl">
+          {PRICING.price}
+        </p>
+        <p className="text-sm font-medium text-[#515154] md:text-base">{PRICING.priceUnit}</p>
+      </div>
       <p className="mt-2 text-sm text-[#515154]">{PRICING.rateDetail}</p>
 
       <div className="my-6 h-px bg-slate-200/80" />
@@ -353,17 +357,20 @@ function MobileStickyCta({
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-40 border-t border-slate-200/80 bg-white/90 px-4 py-3 shadow-[0_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur-md transition duration-200 lg:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-slate-200/80 bg-white/90 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur-md transition duration-200 lg:hidden ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"
       }`}
       aria-hidden={!visible}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
-        <p className="text-xl font-extrabold text-[#0B0B0B]">{PRICING.price}</p>
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
+        <p className="min-w-0 truncate text-lg font-extrabold text-[#0B0B0B] sm:text-xl">
+          {PRICING.price}{" "}
+          <span className="text-sm font-medium text-[#515154]">{PRICING.priceUnit}</span>
+        </p>
         <Link
           href={PRICING.ctaPrimary.href}
           tabIndex={visible ? 0 : -1}
-          className="rounded-xl bg-[#EE6B6E] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#E05558] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EE6B6E] focus-visible:ring-offset-2"
+          className="shrink-0 rounded-xl bg-[#EE6B6E] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#E05558] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EE6B6E] focus-visible:ring-offset-2"
         >
           Inscrire
         </Link>
@@ -384,20 +391,20 @@ export default function InscriptionRendezVous() {
         ref={sectionRef}
         id={SECTION.id}
         aria-labelledby="inscription-title"
-        className="relative overflow-hidden bg-[#FAF8F5] py-24 md:py-32"
+        className="relative overflow-hidden bg-[#FAF8F5] py-24 pb-32 md:py-32 lg:pb-32"
       >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(46,200,220,0.08)_0%,_transparent_55%)]" />
-        <div className="relative mx-auto max-w-6xl px-6">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <div id="inscription-title" className="mx-auto max-w-4xl text-center">
             <h2 className="mt-4 font-bold leading-[1.2] tracking-tight text-[#0B0B0B]">
-              <span className="block whitespace-nowrap text-[clamp(1.05rem,4.1vw,2.65rem)]">
+              <span className="block text-[clamp(1.15rem,5vw,2.65rem)]">
                 <span className="mx-1 inline-block rounded-full bg-[#EE6B6E] px-2.5 py-0.5 font-extrabold text-white md:px-4 md:py-1">
                   Inscription
                 </span>{" "}
                 {line1.replace(/^Inscription\s*/, "")}
               </span>
               {line2 ? (
-                <span className="mt-1 block text-[clamp(1.05rem,4.1vw,2.65rem)]">{line2}</span>
+                <span className="mt-1 block text-[clamp(1.15rem,5vw,2.65rem)]">{line2}</span>
               ) : null}
             </h2>
             <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-[#515154] md:text-xl">

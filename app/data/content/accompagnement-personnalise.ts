@@ -246,8 +246,8 @@ export const accompagnementPersonnaliseContent = {
       {
         slug: "pack-3h",
         title: "Pack 3h — Besoin ciblé",
-        price: "329 €",
-        rate: "soit 110 €/h",
+        price: "299 €",
+        rate: "soit 100 €/h",
         description:
           "Pour répondre à un problème précis : préparer un gros contrôle, reprendre une mauvaise note, créer une méthode de travail, organiser une période chargée ou apprendre à mieux réviser.",
         idealFor: "Un besoin ponctuel, une difficulté ciblée, une remise à plat rapide.",
@@ -257,8 +257,8 @@ export const accompagnementPersonnaliseContent = {
       {
         slug: "pack-8h",
         title: "Pack 8h — Suivi renforcé",
-        price: "699 €",
-        rate: "soit 87 €/h",
+        price: "549 €",
+        rate: "soit 69 €/h",
         description:
           "Pour accompagner l'élève dans la durée, installer de nouvelles habitudes et suivre ses progrès semaine après semaine.",
         idealFor:
@@ -269,8 +269,8 @@ export const accompagnementPersonnaliseContent = {
       {
         slug: "pack-16h",
         title: "Pack 16h — Coaching approfondi",
-        price: "1199 €",
-        rate: "soit 75 €/h",
+        price: "944 €",
+        rate: "soit 59 €/h",
         description:
           "Pour un suivi long sur une période clé : préparation du brevet ou du bac, reprise en profondeur des méthodes, ou accompagnement sur un trimestre entier.",
         idealFor: "Un besoin structurel, une préparation d'examen exigeante, un suivi sur plusieurs mois.",

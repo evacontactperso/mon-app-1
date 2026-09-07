@@ -68,7 +68,7 @@ function ChannelChip({
       </span>
       <div className="min-w-0 flex-1">
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8E8E93]">{label}</p>
-        <p className="mt-0.5 truncate text-sm font-semibold text-[#0B0B0B]">{value}</p>
+        <p className="mt-0.5 break-all text-sm font-semibold text-[#0B0B0B] sm:truncate">{value}</p>
         <p
           className={`mt-1.5 inline-flex items-center gap-1 text-sm font-bold transition group-hover:gap-2 ${ctaClassName}`}
         >

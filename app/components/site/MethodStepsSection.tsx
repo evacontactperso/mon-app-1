@@ -74,25 +74,22 @@ export default function MethodStepsSection({
         accent="pink"
       />
 
-      {/* Mobile: horizontal carousel */}
-      <div className="relative mt-12 lg:hidden">
-        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {steps.map((step) => (
-            <article
-              key={step.title}
-              className="group w-[min(85vw,280px)] shrink-0 snap-center rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
+      {/* Mobile: cartes empilées */}
+      <div className="relative mt-12 space-y-4 lg:hidden">
+        {steps.map((step) => (
+          <article
+            key={step.title}
+            className="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
+          >
+            <div
+              className={`mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${stepGradients[step.color]} text-xl font-bold text-white shadow-lg`}
             >
-              <div
-                className={`mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${stepGradients[step.color]} text-xl font-bold text-white shadow-lg`}
-              >
-                {step.icon ?? step.step}
-              </div>
-              <h3 className="text-lg font-bold text-white">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/70">{step.text}</p>
-            </article>
-          ))}
-        </div>
-        <p className="mt-2 text-center text-xs text-white/50">Glissez pour voir les 5 piliers →</p>
+              {step.icon ?? step.step}
+            </div>
+            <h3 className="text-lg font-bold text-white">{step.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-white/70">{step.text}</p>
+          </article>
+        ))}
       </div>
 
       {/* lg–xl : 3-column grid */}

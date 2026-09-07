@@ -50,7 +50,6 @@ export default function MethodologiePage() {
           cards={c.consequences.cards}
           highlight="difficultés"
           accent="warm"
-          mobileHint="Glissez pour voir les 5 constats →"
         />
       </FadeIn>
 

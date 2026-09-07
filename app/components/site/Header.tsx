@@ -162,10 +162,10 @@ export default function Header() {
         {/* Marque — un peu plus à gauche */}
         <Link
           href="/"
-          className="flex shrink-0 items-center gap-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EE6B6E]"
+          className="flex min-w-0 shrink items-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EE6B6E] sm:gap-2.5"
         >
-          <BrandLogoM className="h-11 w-11 md:h-12 md:w-12" />
-          <span className="text-lg font-bold tracking-tight text-[#0B0B0B] md:text-xl">
+          <BrandLogoM className="h-10 w-10 shrink-0 sm:h-11 sm:w-11 md:h-12 md:w-12" />
+          <span className="truncate text-base font-bold tracking-tight text-[#0B0B0B] sm:text-lg md:text-xl">
             {SITE_NAME}
           </span>
         </Link>

@@ -1,5 +1,5 @@
 export const sectionSubtitleClass =
-  "mt-5 text-lg leading-relaxed text-[#515154] md:text-xl";
+  "mt-4 text-base leading-relaxed text-[#515154] sm:mt-5 sm:text-lg md:text-xl";
 
 type SectionHeaderProps = {
   eyebrow?: string;
@@ -69,7 +69,7 @@ function renderTitleWithHighlight(
   return (
     <>
       {title.slice(0, index)}
-      <span className={`${highlightPillClass[accent]} whitespace-nowrap`}>{matched}</span>
+      <span className={`${highlightPillClass[accent]} box-decoration-clone whitespace-normal sm:whitespace-nowrap`}>{matched}</span>
       {title.slice(index + matched.length)}
     </>
   );
@@ -116,7 +116,7 @@ export default function SectionHeader({
         </span>
       )}
       <h2
-        className={`mt-4 text-3xl font-bold leading-[1.15] tracking-tight md:text-4xl lg:text-[2.85rem] ${
+        className={`mt-4 text-[1.65rem] font-bold leading-[1.2] tracking-tight sm:text-3xl md:text-4xl lg:text-[2.85rem] ${
           dark ? "text-white" : "text-[#0B0B0B]"
         } ${isMultiline ? "whitespace-normal" : ""}`}
       >

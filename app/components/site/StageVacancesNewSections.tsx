@@ -309,7 +309,7 @@ export function StageProgramTableSection({
       </div>
 
       {/* Mobile : cartes par jour */}
-      <div className="mt-10 space-y-5 lg:hidden">
+      <div className="mt-10 space-y-5 md:hidden">
         {days.map((day, dayIndex) => {
           const col = columnColorPalette[dayIndex % columnColorPalette.length];
           return (
@@ -426,7 +426,7 @@ export function StageFormatCardsSection({
   cards: FormatCard[];
 }) {
   return (
-    <PageSection tone="white" size="comfortable" innerClassName="mx-auto w-full max-w-[100rem] px-2 md:px-3">
+    <PageSection tone="white" size="comfortable" innerClassName="mx-auto w-full max-w-[100rem] px-4 md:px-3">
       <SectionHeader
         title={title}
         subtitle={subtitle}
@@ -435,8 +435,8 @@ export function StageFormatCardsSection({
         accent="indigo"
       />
 
-      {/* Desktop & tablette : 5 cartes sur une ligne */}
-      <div className="mt-14 hidden gap-3 md:grid md:grid-cols-5 md:gap-4">
+      {/* Desktop : 5 cartes ; tablette : 2–3 colonnes */}
+      <div className="mt-14 hidden gap-3 md:grid md:grid-cols-2 md:gap-4 lg:grid-cols-3 xl:grid-cols-5">
         {cards.map((card, i) => {
           const accent = formatCardAccents[i % formatCardAccents.length];
           return (
@@ -461,33 +461,30 @@ export function StageFormatCardsSection({
         })}
       </div>
 
-      {/* Mobile : défilement horizontal, une ligne */}
-      <div className="mt-12 md:hidden">
-        <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 pt-7 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {cards.map((card, i) => {
-            const accent = formatCardAccents[i % formatCardAccents.length];
-            return (
-              <div key={card.title} className="relative w-[min(78vw,260px)] shrink-0 snap-center pt-0">
-                <span
-                  className={`absolute left-1/2 top-0 z-20 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-2xl shadow-[0_8px_24px_rgba(15,23,42,0.12)] ${accent.icon}`}
-                  aria-hidden
-                >
-                  {card.icon}
-                </span>
-                <article className="rounded-2xl border border-slate-200/70 bg-white px-5 pb-5 pt-10 shadow-sm">
-                  <div className={`mx-auto mb-4 h-1 w-10 rounded-full ${accent.bar}`} />
-                  <h3 className="text-center text-base font-bold leading-snug text-[#0B0B0B]">
-                    {renderFormatTitle(card.title, accent.emphasis)}
-                  </h3>
-                  <p className="mt-2 text-center text-sm leading-relaxed text-[#515154]">
-                    {card.text}
-                  </p>
-                </article>
-              </div>
-            );
-          })}
-        </div>
-        <p className="text-center text-xs text-[#515154]/60">Glissez pour voir les 5 atouts →</p>
+      {/* Mobile : cartes empilées */}
+      <div className="mt-12 space-y-8 md:hidden">
+        {cards.map((card, i) => {
+          const accent = formatCardAccents[i % formatCardAccents.length];
+          return (
+            <div key={card.title} className="relative pt-7">
+              <span
+                className={`absolute left-1/2 top-7 z-20 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-2xl shadow-[0_8px_24px_rgba(15,23,42,0.12)] ${accent.icon}`}
+                aria-hidden
+              >
+                {card.icon}
+              </span>
+              <article className="rounded-2xl border border-slate-200/70 bg-white px-5 pb-5 pt-10 shadow-sm">
+                <div className={`mx-auto mb-4 h-1 w-10 rounded-full ${accent.bar}`} />
+                <h3 className="text-center text-base font-bold leading-snug text-[#0B0B0B]">
+                  {renderFormatTitle(card.title, accent.emphasis)}
+                </h3>
+                <p className="mt-2 text-center text-sm leading-relaxed text-[#515154]">
+                  {card.text}
+                </p>
+              </article>
+            </div>
+          );
+        })}
       </div>
     </PageSection>
   );

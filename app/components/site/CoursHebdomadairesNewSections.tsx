@@ -218,7 +218,7 @@ export function WeeklyAgendaTableSection({
       id={id}
       tone="dark"
       size="comfortable"
-      innerClassName="mx-auto w-full max-w-[100rem] px-2 md:px-3"
+      innerClassName="mx-auto w-full max-w-[100rem] px-4 md:px-3"
       overlay={
         <>
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(238,107,110,0.14)_0%,_transparent_50%)]" />
@@ -446,7 +446,7 @@ export function WeeklyWhyCardsSection({
   cards: { icon: string; title: string; text: string }[];
 }) {
   return (
-    <PageSection tone="white" size="comfortable" innerClassName="mx-auto w-full max-w-[100rem] px-2 md:px-3">
+    <PageSection tone="white" size="comfortable" innerClassName="mx-auto w-full max-w-[100rem] px-4 md:px-3">
       <SectionHeader
         title={title}
         subtitle={subtitle}
@@ -455,7 +455,7 @@ export function WeeklyWhyCardsSection({
         accent="pink"
       />
 
-      <div className="mt-14 hidden gap-3 md:grid md:grid-cols-5 md:gap-4">
+      <div className="mt-14 hidden gap-3 md:grid md:grid-cols-2 md:gap-4 lg:grid-cols-3 xl:grid-cols-5">
         {cards.map((card, i) => {
           const accent = cardAccents[i % cardAccents.length];
           return (
@@ -480,32 +480,29 @@ export function WeeklyWhyCardsSection({
         })}
       </div>
 
-      <div className="mt-12 md:hidden">
-        <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 pt-7 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {cards.map((card, i) => {
-            const accent = cardAccents[i % cardAccents.length];
-            return (
-              <div key={card.title} className="relative w-[min(78vw,260px)] shrink-0 snap-center">
-                <span
-                  className={`absolute left-1/2 top-0 z-20 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-2xl shadow-[0_8px_24px_rgba(15,23,42,0.12)] ${accent.icon}`}
-                  aria-hidden
-                >
-                  {card.icon}
-                </span>
-                <article className="rounded-2xl border border-slate-200/70 bg-white px-5 pb-5 pt-10 shadow-sm">
-                  <div className={`mx-auto mb-4 h-1 w-10 rounded-full ${accent.bar}`} />
-                  <h3 className="text-center text-base font-bold leading-snug text-[#0B0B0B]">
-                    {renderCardTitle(card.title, accent.emphasis)}
-                  </h3>
-                  <p className="mt-2 text-center text-sm leading-relaxed text-[#515154]">
-                    {card.text}
-                  </p>
-                </article>
-              </div>
-            );
-          })}
-        </div>
-        <p className="text-center text-xs text-[#515154]/60">Glissez pour voir les 5 atouts →</p>
+      <div className="mt-12 space-y-8 md:hidden">
+        {cards.map((card, i) => {
+          const accent = cardAccents[i % cardAccents.length];
+          return (
+            <div key={card.title} className="relative pt-7">
+              <span
+                className={`absolute left-1/2 top-7 z-20 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border text-2xl shadow-[0_8px_24px_rgba(15,23,42,0.12)] ${accent.icon}`}
+                aria-hidden
+              >
+                {card.icon}
+              </span>
+              <article className="rounded-2xl border border-slate-200/70 bg-white px-5 pb-5 pt-10 shadow-sm">
+                <div className={`mx-auto mb-4 h-1 w-10 rounded-full ${accent.bar}`} />
+                <h3 className="text-center text-base font-bold leading-snug text-[#0B0B0B]">
+                  {renderCardTitle(card.title, accent.emphasis)}
+                </h3>
+                <p className="mt-2 text-center text-sm leading-relaxed text-[#515154]">
+                  {card.text}
+                </p>
+              </article>
+            </div>
+          );
+        })}
       </div>
     </PageSection>
   );
@@ -538,7 +535,7 @@ export function WeeklyInscriptionSection({
     >
       <div className="mx-auto max-w-4xl text-center">
         <h2 className="mt-4 font-bold leading-[1.2] tracking-tight text-[#0B0B0B]">
-          <span className="block whitespace-nowrap text-[clamp(1.05rem,4.1vw,2.65rem)]">
+          <span className="block text-[clamp(1.15rem,5vw,2.65rem)]">
             <span className="mx-1 inline-block rounded-full bg-[#6366F1] px-2.5 py-0.5 font-extrabold text-white md:px-4 md:py-1">
               Inscription
             </span>{" "}

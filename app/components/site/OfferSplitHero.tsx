@@ -178,17 +178,17 @@ export default function OfferSplitHero({
     <section className="relative grid min-h-[88svh] w-full overflow-hidden lg:grid-cols-[minmax(2.75rem,5vw)_minmax(0,1fr)_minmax(2.75rem,5vw)]">
       <ColorStripe color={theme.solid} />
       <div
-        className={`relative flex min-h-[46svh] flex-col justify-center bg-gradient-to-br ${theme.softFrom} via-white to-white px-4 py-16 md:px-6 lg:min-h-[88svh] lg:px-8`}
+        className={`relative flex min-h-[46svh] flex-col justify-center bg-gradient-to-br ${theme.softFrom} via-white to-white px-4 py-12 sm:py-16 md:px-6 lg:min-h-[88svh] lg:px-8`}
       >
         <div
           className={`pointer-events-none absolute -right-16 top-10 h-64 w-64 rounded-full ${theme.glow} opacity-40 blur-3xl md:h-96 md:w-96`}
           aria-hidden
         />
         <div className="relative mx-auto w-full max-w-none text-center">
-          <div className="mb-6 flex justify-center md:mb-8">
+          <div className="mb-5 flex justify-center sm:mb-6 md:mb-8">
             <LogoM
               color={theme.solid}
-              className="aspect-square h-[4.65rem] w-[4.65rem] md:h-[5.35rem] md:w-[5.35rem] lg:h-24 lg:w-24"
+              className="aspect-square h-[3.85rem] w-[3.85rem] sm:h-[4.65rem] sm:w-[4.65rem] md:h-[5.35rem] md:w-[5.35rem] lg:h-24 lg:w-24"
             />
             <span className="sr-only">L&apos;Atelier des Méthodes</span>
           </div>
@@ -199,13 +199,13 @@ export default function OfferSplitHero({
           </p>
           <h1
             tabIndex={-1}
-            className="mx-auto mt-5 text-balance text-3xl font-extrabold leading-[1.25] tracking-tight text-[#0B0B0B] outline-none md:text-4xl lg:text-[2.85rem]"
+            className="mx-auto mt-4 text-balance text-[1.7rem] font-extrabold leading-[1.25] tracking-tight text-[#0B0B0B] outline-none sm:mt-5 sm:text-3xl md:text-4xl lg:text-[2.85rem]"
             style={{ maxWidth: `min(100%, ${titleMaxCh}ch)` }}
           >
             {renderHighlighted(title, highlightWord, accent)}
           </h1>
           <p
-            className={`mx-auto mt-5 text-base leading-relaxed text-[#515154] md:text-lg ${
+            className={`mx-auto mt-4 text-[15px] leading-relaxed text-[#515154] sm:mt-5 sm:text-base md:text-lg ${
               lead.includes("\n")
                 ? "max-w-[68ch] whitespace-pre-line"
                 : "max-w-[42ch] text-balance"
@@ -213,11 +213,11 @@ export default function OfferSplitHero({
           >
             {lead}
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href={ctaPrimary.href} variant="parent">
+          <div className="mt-8 flex w-full flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-4">
+            <Button href={ctaPrimary.href} variant="parent" className="w-full sm:w-auto">
               {ctaPrimary.label}
             </Button>
-            <Button href={ctaSecondary.href} variant="parentOutline">
+            <Button href={ctaSecondary.href} variant="parentOutline" className="w-full sm:w-auto">
               {ctaSecondary.label}
             </Button>
           </div>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {
-  CONTACT_EMAIL,
+  CONTACT_PHONE,
   COPYRIGHT,
   FOOTER_LINKS,
   SITE_NAME,
@@ -38,10 +38,12 @@ export default function Footer() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-[#8E8E93]">Contact</p>
             <a
-              href={`mailto:${CONTACT_EMAIL}`}
+              href={CONTACT_PHONE.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-4 block text-sm text-[#515154] transition-colors hover:text-[#EE6B6E]"
             >
-              {CONTACT_EMAIL}
+              {CONTACT_PHONE.label}
             </a>
           </div>
         </div>

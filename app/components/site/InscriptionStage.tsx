@@ -358,17 +358,17 @@ function MobileStickyCta({
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-40 border-t border-slate-200/80 bg-white/90 px-4 py-3 shadow-[0_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur-md transition duration-200 lg:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-slate-200/80 bg-white/90 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur-md transition duration-200 lg:hidden ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"
       }`}
       aria-hidden={!visible}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
-        <p className="text-xl font-extrabold tabular-nums text-[#0B0B0B]">{PRICING.price}</p>
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
+        <p className="min-w-0 truncate text-lg font-extrabold tabular-nums text-[#0B0B0B] sm:text-xl">{PRICING.price}</p>
         <Link
           href={PRICING.ctaPrimary.href}
           tabIndex={visible ? 0 : -1}
-          className="rounded-xl bg-[#EE6B6E] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#E05558] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EE6B6E] focus-visible:ring-offset-2"
+          className="shrink-0 rounded-xl bg-[#EE6B6E] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#E05558] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EE6B6E] focus-visible:ring-offset-2"
         >
           Inscrire
         </Link>
@@ -388,10 +388,10 @@ export default function InscriptionStage() {
         ref={sectionRef}
         id={SECTION.id}
         aria-labelledby="inscription-title"
-        className="relative overflow-hidden bg-[#FAF8F5] py-24 md:py-32"
+        className="relative overflow-hidden bg-[#FAF8F5] py-24 pb-32 md:py-32 lg:pb-32"
       >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(252,175,69,0.08)_0%,_transparent_55%)]" />
-        <div className="relative mx-auto max-w-6xl px-6">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
           <div id="inscription-title">
             <SectionHeader
               title={SECTION.title}

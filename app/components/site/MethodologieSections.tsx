@@ -351,8 +351,8 @@ export function MethodologiePiliersSection({
       id={id}
       tone="dark"
       size={size}
-      className="!overflow-visible"
-      innerClassName="mx-auto max-w-[100rem] px-2 md:px-3"
+      className="!overflow-x-clip xl:!overflow-visible"
+      innerClassName="mx-auto max-w-[100rem] px-4 md:px-3"
     >
       <SectionHeader
         title={title}
@@ -363,14 +363,10 @@ export function MethodologiePiliersSection({
         accent="warm"
       />
 
-      <div className="mt-12 lg:hidden">
-        <div className="flex snap-x snap-mandatory items-stretch gap-3 overflow-x-auto px-0.5 pb-4 pt-8 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {items.map((pilier, index) => (
-            <div key={pilier.title} className="flex w-[min(90vw,427px)] shrink-0 snap-center flex-col">
-              <PilierCard pilier={pilier} toneIndex={index} />
-            </div>
-          ))}
-        </div>
+      <div className="mt-12 space-y-5 lg:hidden">
+        {items.map((pilier, index) => (
+          <PilierCard key={pilier.title} pilier={pilier} toneIndex={index} />
+        ))}
       </div>
 
       <div className="mt-14 hidden gap-3 pt-8 lg:grid lg:grid-cols-2 lg:items-stretch xl:grid-cols-3 2xl:grid-cols-5">
@@ -416,8 +412,8 @@ export function MethodologiePiliersCercleSection({
       id={id}
       tone="dark"
       size={size}
-      className="!overflow-visible"
-      innerClassName="mx-auto max-w-[100rem] px-2 md:px-4"
+      className="!overflow-x-clip xl:!overflow-visible"
+      innerClassName="mx-auto max-w-[100rem] px-4 md:px-4"
       overlay={
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(129,140,248,0.12)_0%,_transparent_55%)]" />
       }

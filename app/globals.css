@@ -71,6 +71,11 @@
 
 html {
   scroll-behavior: auto;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* Empêche le focus a11y de recaler le viewport sur le h1 du hero */
