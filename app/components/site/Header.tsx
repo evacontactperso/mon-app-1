@@ -156,13 +156,27 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [othersOpen, setOthersOpen] = useState(false);
 
+  const mobileLinkClass = (href: string) =>
+    `block rounded-lg px-3 py-2.5 text-base font-medium ${
+      pathname === href
+        ? "bg-[#fde8e8] text-[#EE6B6E]"
+        : "text-[#0B0B0B] hover:bg-[#F9F9FB]"
+    }`;
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-[100rem] items-center gap-3 px-3 py-4 md:gap-5 md:px-4 md:py-5 lg:px-5">
-        {/* Marque — un peu plus à gauche */}
+        {/* Marque → haut de « Ma méthode » (même si on y est déjà) */}
         <Link
           href="/"
-          className="flex min-w-0 shrink items-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EE6B6E] sm:gap-2.5"
+          onClick={(e) => {
+            setOpen(false);
+            if (pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }
+          }}
+          className="flex min-w-0 flex-1 items-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EE6B6E] sm:gap-2.5 lg:flex-none lg:shrink"
         >
           <BrandLogoM className="h-10 w-10 shrink-0 sm:h-11 sm:w-11 md:h-12 md:w-12" />
           <span className="truncate text-base font-bold tracking-tight text-[#0B0B0B] sm:text-lg md:text-xl">
@@ -170,7 +184,7 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* 4 pages principales */}
+        {/* Menu complet — desktop */}
         <nav
           className="ml-2 hidden flex-1 items-center justify-center gap-8 lg:flex xl:ml-4 xl:gap-12"
           aria-label="Navigation principale"
@@ -190,7 +204,7 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Contact (+ Autres pages si réactivé) */}
+        {/* Contact (+ Autres pages si réactivé) — desktop */}
         <div className="ml-auto hidden items-center gap-4 lg:flex xl:gap-5">
           <Link
             href={HEADER_CTA.href}
@@ -201,9 +215,10 @@ export default function Header() {
           {SHOW_MENU_OTHER_PAGES ? <OtherPagesDropdown pathname={pathname} /> : null}
         </div>
 
+        {/* Bouton menu — téléphone / tablette */}
         <button
           type="button"
-          className="ml-auto flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200/60 text-[#0B0B0B] lg:hidden"
+          className="ml-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-200/60 text-[#0B0B0B] lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
@@ -232,21 +247,17 @@ export default function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`block rounded-lg px-3 py-2.5 text-base font-medium ${
-                    pathname === link.href
-                      ? "bg-[#fde8e8] text-[#EE6B6E]"
-                      : "text-[#0B0B0B] hover:bg-[#F9F9FB]"
-                  }`}
+                  className={mobileLinkClass(link.href)}
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
-            <li className="mt-2">
+            <li>
               <Link
                 href={HEADER_CTA.href}
-                className="flex w-full items-center justify-center rounded-full bg-[#EE6B6E] px-5 py-3 text-base font-semibold text-white"
+                className={mobileLinkClass(HEADER_CTA.href)}
                 onClick={() => setOpen(false)}
               >
                 {HEADER_CTA.label}

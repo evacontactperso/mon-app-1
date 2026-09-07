@@ -13,7 +13,7 @@ export default function MethodologiePage() {
   const c = methodologieContent;
 
   return (
-    <div className="overflow-x-clip bg-[#FAF8F5]">
+    <div className="bg-[#FAF8F5]">
       <FadeIn eager>
         <MethodologieHero
           title={c.hero.title}

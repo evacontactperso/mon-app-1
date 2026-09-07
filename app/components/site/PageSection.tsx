@@ -33,9 +33,9 @@ const toneGlows: Record<SectionTone, string | null> = {
 
 export const sectionSizeClasses: Record<SectionSize, string> = {
   immersive:
-    "relative flex min-h-[100svh] w-full flex-col justify-center overflow-hidden py-16 md:py-24",
-  comfortable: "relative w-full overflow-hidden py-12 sm:py-16 md:py-24",
-  compact: "relative w-full overflow-hidden py-10 sm:py-12 md:py-16",
+    "relative flex min-h-[100svh] w-full flex-col justify-center py-16 md:py-24",
+  comfortable: "relative w-full py-12 sm:py-16 md:py-24",
+  compact: "relative w-full py-10 sm:py-12 md:py-16",
 };
 
 /** @deprecated Use sectionSizeClasses.immersive */

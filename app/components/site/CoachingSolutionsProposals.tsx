@@ -62,7 +62,8 @@ export function SolutionsProposalTickets({
       <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-16">
         <div className="rounded-[28px] border border-[#E5E5EA] bg-white p-6 md:p-8">
           <h3 className="text-center text-lg font-normal text-[#0B0B0B]">{problemLabel}</h3>
-          <ul className="mt-6 space-y-4">
+          <p className="mt-4 text-center text-sm font-semibold text-[#515154]">L&apos;élève&nbsp;:</p>
+          <ul className="mt-4 space-y-4">
             {rows.map((row) => (
               <li
                 key={row.problem}

@@ -351,7 +351,7 @@ export function MethodologiePiliersSection({
       id={id}
       tone="dark"
       size={size}
-      className="!overflow-x-clip xl:!overflow-visible"
+      className="xl:!overflow-visible"
       innerClassName="mx-auto max-w-[100rem] px-4 md:px-3"
     >
       <SectionHeader
@@ -412,7 +412,7 @@ export function MethodologiePiliersCercleSection({
       id={id}
       tone="dark"
       size={size}
-      className="!overflow-x-clip xl:!overflow-visible"
+      className="xl:!overflow-visible"
       innerClassName="mx-auto max-w-[100rem] px-4 md:px-4"
       overlay={
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(129,140,248,0.12)_0%,_transparent_55%)]" />
@@ -538,7 +538,7 @@ export function MethodologiePiliersCercleSection({
       {/* Tablette / mobile : mini cercle + cartes complètes empilées */}
       <div className="mt-16 xl:hidden">
         <div className="relative mx-auto aspect-square w-full max-w-sm">
-          <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden>
+          <svg viewBox="0 0 100 100" className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden>
             <circle cx="50" cy="50" r="28" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
             <polygon
               points={polygon}
@@ -563,7 +563,7 @@ export function MethodologiePiliersCercleSection({
             })}
             <circle cx="50" cy="50" r="14" fill="#141416" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
           </svg>
-          <div className="absolute inset-[34%] flex flex-col items-center justify-center text-center">
+          <div className="pointer-events-none absolute inset-[34%] flex flex-col items-center justify-center text-center">
             <p className="font-[family-name:var(--font-heading)] text-3xl font-extrabold leading-none text-white">
               5
             </p>

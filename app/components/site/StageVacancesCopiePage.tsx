@@ -21,7 +21,7 @@ export default function StageVacancesCopiePage() {
   const c = stageVacancesCopieContent;
 
   return (
-    <div className="overflow-x-clip bg-[#FAF8F5]">
+    <div className="bg-[#FAF8F5]">
       <FadeIn>
         <StageVacancesCopieHero
           badge={c.hero.badge}

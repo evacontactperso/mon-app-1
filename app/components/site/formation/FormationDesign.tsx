@@ -132,7 +132,7 @@ export function cardSurfaceOnTintedBg(rounded = "rounded-[28px]"): string {
 export function SectionTintLayer({ tint }: { tint: SectionTint }) {
   return (
     <>
-      <div className={`absolute inset-0 ${tint.className}`} aria-hidden />
+      <div className={`pointer-events-none absolute inset-0 ${tint.className}`} aria-hidden />
       {tint.overlay && (
         <div className={`pointer-events-none absolute inset-0 ${tint.overlay}`} aria-hidden />
       )}
@@ -158,7 +158,7 @@ export function TintedPageSection({
   return (
     <section
       id={id}
-      className={`relative overflow-hidden ${sectionSizeClasses[size]} ${className}`}
+      className={`relative ${sectionSizeClasses[size]} ${className}`}
     >
       <SectionTintLayer tint={sectionTintForBrandColor(pillColor)} />
       <div className={`relative ${innerClassName}`}>{children}</div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 const CTA_HREF = "/contact?offre=cours-hebdomadaires";
 
@@ -199,51 +199,17 @@ function usePrefersReducedMotion() {
   return reduced;
 }
 
-function useInView(ref: React.RefObject<Element | null>, options?: IntersectionObserverInit) {
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setInView(true);
-    }, options);
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [ref, options?.rootMargin, options?.threshold]);
-  return inView;
-}
-
 function Reveal({
   children,
-  delayMs = 0,
-  reducedMotion,
   className = "",
 }: {
   children: ReactNode;
   delayMs?: number;
-  reducedMotion: boolean;
+  reducedMotion?: boolean;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={
-        reducedMotion
-          ? undefined
-          : {
-              opacity: inView ? 1 : 0,
-              transform: inView ? "translateY(0)" : "translateY(12px)",
-              transition: `opacity 400ms ease-out ${delayMs}ms, transform 400ms ease-out ${delayMs}ms`,
-            }
-      }
-    >
-      {children}
-    </div>
-  );
+  // Pas d'opacity-0 : sur mobile ça laisse des zones grises et perturbe le scroll tactile.
+  return <div className={className}>{children}</div>;
 }
 
 function PricingCard({ className = "" }: { className?: string }) {
@@ -309,152 +275,79 @@ function PricingCard({ className = "" }: { className?: string }) {
   );
 }
 
-function MobileStickyCta({
-  sectionRef,
-  pricingRef,
-}: {
-  sectionRef: React.RefObject<HTMLElement | null>;
-  pricingRef: React.RefObject<HTMLDivElement | null>;
-}) {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const pricing = pricingRef.current;
-    if (!section || !pricing) return;
-
-    let sectionInView = false;
-    let pricingInView = false;
-
-    const update = () => {
-      setVisible(sectionInView && !pricingInView);
-    };
-
-    const sectionObs = new IntersectionObserver(
-      ([entry]) => {
-        sectionInView = entry.isIntersecting;
-        update();
-      },
-      { threshold: 0.08 }
-    );
-    const pricingObs = new IntersectionObserver(
-      ([entry]) => {
-        pricingInView = entry.isIntersecting;
-        update();
-      },
-      { threshold: 0.35 }
-    );
-
-    sectionObs.observe(section);
-    pricingObs.observe(pricing);
-    return () => {
-      sectionObs.disconnect();
-      pricingObs.disconnect();
-    };
-  }, [sectionRef, pricingRef]);
-
-  return (
-    <div
-      className={`fixed inset-x-0 bottom-0 z-40 border-t border-slate-200/80 bg-white/90 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur-md transition duration-200 lg:hidden ${
-        visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"
-      }`}
-      aria-hidden={!visible}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
-        <p className="min-w-0 truncate text-lg font-extrabold text-[#0B0B0B] sm:text-xl">
-          {PRICING.price}{" "}
-          <span className="text-sm font-medium text-[#515154]">{PRICING.priceUnit}</span>
-        </p>
-        <Link
-          href={PRICING.ctaPrimary.href}
-          tabIndex={visible ? 0 : -1}
-          className="shrink-0 rounded-xl bg-[#EE6B6E] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#E05558] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EE6B6E] focus-visible:ring-offset-2"
-        >
-          Inscrire
-        </Link>
-      </div>
-    </div>
-  );
 }
 
 export default function InscriptionRendezVous() {
   const reducedMotion = usePrefersReducedMotion();
-  const sectionRef = useRef<HTMLElement>(null);
-  const pricingRef = useRef<HTMLDivElement>(null);
   const [line1, line2] = SECTION.title.split("\n");
 
   return (
-    <>
-      <section
-        ref={sectionRef}
-        id={SECTION.id}
-        aria-labelledby="inscription-title"
-        className="relative overflow-hidden bg-[#FAF8F5] py-24 pb-32 md:py-32 lg:pb-32"
-      >
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(46,200,220,0.08)_0%,_transparent_55%)]" />
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-          <div id="inscription-title" className="mx-auto max-w-4xl text-center">
-            <h2 className="mt-4 font-bold leading-[1.2] tracking-tight text-[#0B0B0B]">
-              <span className="block text-[clamp(1.15rem,5vw,2.65rem)]">
-                <span className="mx-1 inline-block rounded-full bg-[#EE6B6E] px-2.5 py-0.5 font-extrabold text-white md:px-4 md:py-1">
-                  Inscription
-                </span>{" "}
-                {line1.replace(/^Inscription\s*/, "")}
-              </span>
-              {line2 ? (
-                <span className="mt-1 block text-[clamp(1.15rem,5vw,2.65rem)]">{line2}</span>
-              ) : null}
-            </h2>
-            <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-[#515154] md:text-xl">
-              {SECTION.subtitle}
-            </p>
-          </div>
+    <section
+      id={SECTION.id}
+      aria-labelledby="inscription-title"
+      className="relative bg-[#FAF8F5] py-24 md:py-32"
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(46,200,220,0.08)_0%,_transparent_55%)]" />
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <div id="inscription-title" className="mx-auto max-w-4xl text-center">
+          <h2 className="mt-4 font-bold leading-[1.2] tracking-tight text-[#0B0B0B]">
+            <span className="block text-[clamp(1.15rem,5vw,2.65rem)]">
+              <span className="mx-1 inline-block rounded-full bg-[#EE6B6E] px-2.5 py-0.5 font-extrabold text-white md:px-4 md:py-1">
+                Inscription
+              </span>{" "}
+              {line1.replace(/^Inscription\s*/, "")}
+            </span>
+            {line2 ? (
+              <span className="mt-1 block text-[clamp(1.15rem,5vw,2.65rem)]">{line2}</span>
+            ) : null}
+          </h2>
+          <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-[#515154] md:text-xl">
+            {SECTION.subtitle}
+          </p>
+        </div>
 
-          <div className="mt-14 grid items-stretch gap-10 lg:grid-cols-12">
-            <div className="flex flex-col lg:col-span-7">
-              <dl className="flex flex-1 flex-col gap-3">
-                {FEATURE_CARDS.map((card, index) => {
-                  const tone = TONE_STYLES[card.tone];
-                  return (
-                    <Reveal
-                      key={card.id}
-                      delayMs={index * 60}
-                      reducedMotion={reducedMotion}
-                      className="flex-1"
-                    >
-                      <div className="flex h-full items-center rounded-2xl border border-slate-200/70 bg-white p-4 shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(15,23,42,0.08)]">
-                        <div className="flex items-start gap-3">
-                          <span
-                            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${tone.badge}`}
-                          >
-                            <FeatureIcon name={card.icon} />
-                          </span>
-                          <div className="min-w-0">
-                            <dt className="text-[11px] font-bold uppercase tracking-widest text-[#6b7280]">
-                              {card.label}
-                            </dt>
-                            <dd className="mt-1 text-sm font-medium leading-snug text-[#0B0B0B]">
-                              {card.value}
-                            </dd>
-                          </div>
+        <div className="mt-14 grid items-stretch gap-10 lg:grid-cols-12">
+          <div className="flex flex-col lg:col-span-7">
+            <dl className="flex flex-1 flex-col gap-3">
+              {FEATURE_CARDS.map((card, index) => {
+                const tone = TONE_STYLES[card.tone];
+                return (
+                  <Reveal
+                    key={card.id}
+                    delayMs={index * 60}
+                    reducedMotion={reducedMotion}
+                    className="flex-1"
+                  >
+                    <div className="flex h-full items-center rounded-2xl border border-slate-200/70 bg-white p-4 shadow-[0_8px_24px_rgba(15,23,42,0.04)] transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(15,23,42,0.08)]">
+                      <div className="flex items-start gap-3">
+                        <span
+                          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${tone.badge}`}
+                        >
+                          <FeatureIcon name={card.icon} />
+                        </span>
+                        <div className="min-w-0">
+                          <dt className="text-[11px] font-bold uppercase tracking-widest text-[#6b7280]">
+                            {card.label}
+                          </dt>
+                          <dd className="mt-1 text-sm font-medium leading-snug text-[#0B0B0B]">
+                            {card.value}
+                          </dd>
                         </div>
                       </div>
-                    </Reveal>
-                  );
-                })}
-              </dl>
-            </div>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </dl>
+          </div>
 
-            <div className="flex lg:col-span-5">
-              <div ref={pricingRef} className="flex w-full flex-1">
-                <PricingCard className="w-full" />
-              </div>
+          <div className="flex lg:col-span-5">
+            <div className="flex w-full flex-1">
+              <PricingCard className="w-full" />
             </div>
           </div>
         </div>
-      </section>
-
-      <MobileStickyCta sectionRef={sectionRef} pricingRef={pricingRef} />
-    </>
+      </div>
+    </section>
   );
 }

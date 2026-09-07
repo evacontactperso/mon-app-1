@@ -95,7 +95,7 @@ function LogoM({ className = "", color }: { className?: string; color: string })
       viewBox="0 0 120 120"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={`pointer-events-none ${className}`}
       aria-hidden
     >
       <rect x="10" y="10" width="100" height="100" stroke={color} strokeWidth="3" fill="none" />
@@ -175,7 +175,7 @@ export default function OfferSplitHero({
   const theme = ACCENT[accent];
 
   return (
-    <section className="relative grid w-full overflow-x-clip lg:min-h-[88svh] lg:grid-cols-[minmax(2.75rem,5vw)_minmax(0,1fr)_minmax(2.75rem,5vw)]">
+    <section className="relative grid w-full lg:min-h-[88svh] lg:grid-cols-[minmax(2.75rem,5vw)_minmax(0,1fr)_minmax(2.75rem,5vw)]">
       <ColorStripe color={theme.solid} />
       <div
         className={`relative flex flex-col justify-center bg-gradient-to-br ${theme.softFrom} via-white to-white px-4 py-14 sm:py-16 md:px-6 lg:min-h-[88svh] lg:px-8`}

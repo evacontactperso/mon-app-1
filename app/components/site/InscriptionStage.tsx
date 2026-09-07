@@ -204,51 +204,17 @@ function usePrefersReducedMotion() {
   return reduced;
 }
 
-function useInView(ref: React.RefObject<Element | null>, options?: IntersectionObserverInit) {
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setInView(true);
-    }, options);
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [ref, options?.rootMargin, options?.threshold]);
-  return inView;
-}
-
 function Reveal({
   children,
-  delayMs = 0,
-  reducedMotion,
   className = "",
 }: {
   children: ReactNode;
   delayMs?: number;
-  reducedMotion: boolean;
+  reducedMotion?: boolean;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={
-        reducedMotion
-          ? undefined
-          : {
-              opacity: inView ? 1 : 0,
-              transform: inView ? "translateY(0)" : "translateY(12px)",
-              transition: `opacity 400ms ease-out ${delayMs}ms, transform 400ms ease-out ${delayMs}ms`,
-            }
-      }
-    >
-      {children}
-    </div>
-  );
+  // Pas d'opacity-0 : sur mobile ça laisse des zones grises et perturbe le scroll tactile.
+  return <div className={className}>{children}</div>;
 }
 
 function PricingCard({ className = "" }: { className?: string }) {
@@ -388,7 +354,7 @@ export default function InscriptionStage() {
         ref={sectionRef}
         id={SECTION.id}
         aria-labelledby="inscription-title"
-        className="relative overflow-hidden bg-[#FAF8F5] py-24 pb-32 md:py-32 lg:pb-32"
+        className="relative bg-[#FAF8F5] py-24 pb-32 md:py-32 lg:pb-32"
       >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(252,175,69,0.08)_0%,_transparent_55%)]" />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6">

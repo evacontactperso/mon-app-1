@@ -12,7 +12,7 @@ export default function CoursHebdomadairesPage() {
   const c = coursHebdomadairesContent;
 
   return (
-    <div className="overflow-x-clip bg-[#FAF8F5]">
+    <div className="bg-[#FAF8F5]">
       <FadeIn eager>
         <OfferSplitHero
           eyebrow="Cours collectifs"

@@ -105,27 +105,27 @@ export const accompagnementPersonnaliseContent = {
     solutionLabel: "Solutions concrètes mises en place",
     rows: [
       {
-        problem: "Il ne sait pas *quoi faire* le soir en rentrant",
+        problem: "Ne sait pas *quoi faire* le soir en rentrant",
         solution: "Transformer chaque devoir en *petites tâches précises*.",
       },
       {
-        problem: "Il repousse tout au *dernier moment*",
+        problem: "Repousse tout au *dernier moment*",
         solution: "Construire un *planning hebdomadaire*.",
       },
       {
-        problem: "Il révise beaucoup, mais *retient peu*",
+        problem: "Révise beaucoup, mais *retient peu*",
         solution: "Remplacer la simple relecture par des *entraînements actifs*.",
       },
       {
-        problem: "Il se décourage après une *mauvaise note*",
+        problem: "Se décourage après une *mauvaise note*",
         solution: "Analyser la copie *sans jugement* et en tirer des apprentissages.",
       },
       {
-        problem: "Il perd du temps à cause du *désordre*",
+        problem: "Perd du temps à cause du *désordre*",
         solution: "Créer un *système simple* pour ranger et retrouver les documents.",
       },
       {
-        problem: "Il a du mal à *se concentrer*",
+        problem: "A du mal à *se concentrer*",
         solution: "Travailler par *blocs courts* et retirer les distractions.",
       },
     ],

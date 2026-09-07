@@ -24,7 +24,7 @@ export default function CoursHebdomadairesCopiePage() {
   const c = coursHebdomadairesCopieContent;
 
   return (
-    <div className="overflow-x-clip bg-[#FAF8F5]">
+    <div className="bg-[#FAF8F5]">
       <FadeIn>
         <CoursHebdomadairesCopieHero
           badge={c.hero.badge}

@@ -202,7 +202,7 @@ export function AtelierProposalCercle({ title, subtitle, promises }: AtelierProp
           />
         </svg>
 
-        <div className="absolute inset-[36%] flex flex-col items-center justify-center rounded-full text-center">
+        <div className="pointer-events-none absolute inset-[36%] flex flex-col items-center justify-center rounded-full text-center">
           <p className="font-[family-name:var(--font-heading)] text-sm font-extrabold uppercase tracking-[0.2em] text-[#0B0B0B]">
             L&apos;atelier
           </p>
@@ -275,7 +275,7 @@ export function AtelierProposalCercle({ title, subtitle, promises }: AtelierProp
               );
             })}
           </svg>
-          <div className="absolute inset-[34%] flex items-center justify-center rounded-full text-center">
+          <div className="pointer-events-none absolute inset-[34%] flex items-center justify-center rounded-full text-center">
             <p className="font-[family-name:var(--font-heading)] text-xs font-extrabold uppercase tracking-[0.18em] text-[#0B0B0B]">
               L&apos;atelier
             </p>
