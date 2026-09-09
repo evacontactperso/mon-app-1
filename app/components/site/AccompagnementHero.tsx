@@ -5,6 +5,7 @@ type AccompagnementHeroProps = {
   highlightWord?: string;
   /** Conservé pour restauration du sous-titre hero (masqué via OfferSplitHero). */
   lead?: string;
+  keywords?: string[];
   ctaPrimary: { label: string; href: string };
   ctaSecondary: { label: string; href: string };
 };

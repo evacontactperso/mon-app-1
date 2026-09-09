@@ -20,6 +20,7 @@ export default function AccompagnementPersonnalisePage() {
           title={c.hero.title}
           highlightWord={c.hero.highlightWord}
           lead="Votre enfant ne manque pas forcément de capacités."
+          keywords={c.hero.keywords}
           ctaPrimary={c.hero.ctaPrimary}
           ctaSecondary={c.hero.ctaSecondary}
         />

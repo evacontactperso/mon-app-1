@@ -19,6 +19,7 @@ export default function CoursHebdomadairesPage() {
           title={c.hero.title}
           highlightWord={c.hero.highlightWord}
           lead={firstSentence(c.hero.subtitle)}
+          keywords={c.hero.keywords}
           ctaPrimary={c.hero.ctaPrimary}
           ctaSecondary={c.hero.ctaSecondary}
           accent="blue"

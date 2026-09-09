@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import SectionHeader from "./SectionHeader";
 
 const WHATSAPP = {
@@ -84,35 +85,47 @@ export function ContactProposalContactLeft() {
   return (
     <section className="relative overflow-hidden bg-[#FAF8F5] py-20 md:py-28">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(238,107,110,0.08)_0%,_transparent_55%)]" />
-      <div className="relative mx-auto max-w-xl px-6">
+      <div className="relative mx-auto max-w-3xl px-6">
         <SectionHeader
           title="Contact"
-          // Sous-titre masqué temporairement — à remettre si besoin :
-          // subtitle="Une question ? Écrivez-moi, je vous réponds rapidement."
           align="center"
           accent="pink"
         />
+        <p className="mx-auto mt-5 max-w-xl text-center text-base leading-relaxed text-[#515154] md:text-lg">
+          Je serais ravie d&apos;échanger avec vous pour mieux comprendre la situation de votre
+          enfant et vous orienter vers l&apos;accompagnement le plus adapté.
+        </p>
 
-        <div className="mx-auto mt-10 grid max-w-md gap-3 sm:grid-cols-1">
-          <ChannelChip
-            label="WhatsApp"
-            value={WHATSAPP.label}
-            href={WHATSAPP.href}
-            cta="Écrire sur WhatsApp"
-            external
-            iconClassName="bg-[#ecfdf5] text-[#059669] ring-1 ring-emerald-300/40"
-            ctaClassName="text-[#059669]"
-            icon={<WhatsAppIcon className="h-5 w-5" />}
+        <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center gap-8 sm:flex-row sm:items-center sm:gap-10">
+          <Image
+            src="/eva-portrait.jpg"
+            alt="Eva — L'Atelier des Méthodes"
+            width={220}
+            height={220}
+            className="h-36 w-36 shrink-0 rounded-full object-cover object-[center_22%] shadow-[0_12px_32px_rgba(15,23,42,0.12)] ring-4 ring-white sm:h-44 sm:w-44"
+            priority
           />
-          <ChannelChip
-            label="E-mail"
-            value={EMAIL.label}
-            href={EMAIL.href}
-            cta="Envoyer un e-mail"
-            iconClassName="bg-[#EEF2FF] text-[#6366F1] ring-1 ring-[#6366F1]/20"
-            ctaClassName="text-[#6366F1]"
-            icon={<MailIcon className="h-5 w-5" />}
-          />
+          <div className="grid w-full min-w-0 max-w-md gap-3">
+            <ChannelChip
+              label="WhatsApp"
+              value={WHATSAPP.label}
+              href={WHATSAPP.href}
+              cta="Écrire sur WhatsApp"
+              external
+              iconClassName="bg-[#ecfdf5] text-[#059669] ring-1 ring-emerald-300/40"
+              ctaClassName="text-[#059669]"
+              icon={<WhatsAppIcon className="h-5 w-5" />}
+            />
+            <ChannelChip
+              label="E-mail"
+              value={EMAIL.label}
+              href={EMAIL.href}
+              cta="Envoyer un e-mail"
+              iconClassName="bg-[#EEF2FF] text-[#6366F1] ring-1 ring-[#6366F1]/20"
+              ctaClassName="text-[#6366F1]"
+              icon={<MailIcon className="h-5 w-5" />}
+            />
+          </div>
         </div>
       </div>
     </section>

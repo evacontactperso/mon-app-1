@@ -23,6 +23,7 @@ export const accompagnementPersonnaliseContent = {
     ],
     ctaPrimary: { label: "Réserver un bilan", href: "/contact?offre=accompagnement-personnalise" },
     ctaSecondary: { label: "Me contacter", href: "/contact?offre=accompagnement-personnalise" },
+    keywords: ["Bilan approfondi", "Plan d'action personnalisé", "Suivi de long terme"],
   },
   bilan: {
     title: "Un diagnostic complet\nde ses méthodes de travail",

@@ -23,6 +23,7 @@ export const coursHebdomadairesContent = {
       "Chaque semaine, votre enfant travaille une compétence précise de méthodologie scolaire : s'organiser, planifier ses devoirs, se mettre au travail, préparer un contrôle, apprendre plus efficacement ou corriger ses erreurs. L'objectif n'est pas d'ajouter du travail à son emploi du temps : c'est de lui apprendre à mieux gérer le travail qu'il a déjà. Pendant 1h30, il découvre une méthode claire, l'applique à des situations concrètes et repart avec un outil directement réutilisable dans sa semaine. Un format régulier, pratique et motivant pour installer de bonnes habitudes dès le début de l'année",
     ctaPrimary: { label: "Contactez-moi pour l'inscription", href: "/contact?offre=cours-hebdomadaires" },
     ctaSecondary: { label: "Voir l'agenda des séances", href: "#agenda" },
+    keywords: ["1h30", "week-end", "5 élèves max."],
   },
   agenda: {
     id: "agenda",
