@@ -244,23 +244,46 @@ export const accompagnementPersonnaliseContent = {
       "Chaque pack commence par un bilan approfondi. Ensuite, les séances permettent de travailler un objectif précis ou d'installer un suivi plus régulier, selon la situation de l'élève",
     packs: [
       {
+        slug: "seance-essai",
+        title: "Séance d'essai d'1h",
+        price: "59 €",
+        originalPrice: "80 €",
+        discountLabel: "-26 %",
+        rate: "",
+        description: "",
+        includes: [
+          "*Découverte de l'accompagnement* avant de s'engager sur un pack : rencontre avec l'élève, découverte de ses problématiques et de ses difficultés, présentation de ce que nous allons mettre en place ensemble",
+        ],
+        idealFor: "Découvrir l'accompagnement avant de s'engager sur un pack.",
+        cta: {
+          label: "Réserver la séance d'essai",
+          href: "/contact?offre=accompagnement-personnalise&pack=essai",
+        },
+        accent: "blue" as const,
+      },
+      {
         slug: "pack-3h",
-        title: "Pack 3h — Besoin ciblé",
-        price: "299 €",
-        rate: "soit 100 €/h",
-        description:
-          "Pour répondre à un problème précis : préparer un gros contrôle, reprendre une mauvaise note, créer une méthode de travail, organiser une période chargée ou apprendre à mieux réviser.",
+        title: "Pack 3h — Bilan",
+        price: "237 €",
+        rate: "soit 79 €/h",
+        // Conservé : "Un bilan uniquement : on observe en profondeur..."
+        description: "",
+        includes: ["*Bilan approfondi* des habitudes de travail de l'élève : observation et identification de ce qui bloque, diagnostic clair des axes de progression."],
         idealFor: "Un besoin ponctuel, une difficulté ciblée, une remise à plat rapide.",
         cta: { label: "Choisir le pack 3h", href: "/contact?offre=accompagnement-personnalise&pack=3h" },
         accent: "pink" as const,
       },
       {
         slug: "pack-8h",
-        title: "Pack 8h — Suivi renforcé",
-        price: "632 €",
-        rate: "soit 79 €/h",
-        description:
-          "Pour accompagner l'élève dans la durée, installer de nouvelles habitudes et suivre ses progrès semaine après semaine.",
+        title: "Pack 8h — Plan d'action",
+        price: "552 €",
+        rate: "soit 69 €/h",
+        // Conservé : "En plus du bilan, on construit ensemble un plan d'action..."
+        description: "",
+        includes: [
+          "*Bilan approfondi* des habitudes de travail de l'élève : observation et identification de ce qui bloque, diagnostic clair des axes de progression.",
+          "*Construction d'un plan d'action* personnalisé : des étapes concrètes, des outils adaptés, et une stratégie claire pour changer ses habitudes de travail.",
+        ],
         idealFor:
           "Brevet, bac, trimestre important, difficultés d'organisation installées, perte de confiance ou besoin d'autonomie.",
         cta: { label: "Choisir le pack 8h", href: "/contact?offre=accompagnement-personnalise&pack=8h" },
@@ -268,11 +291,16 @@ export const accompagnementPersonnaliseContent = {
       },
       {
         slug: "pack-16h",
-        title: "Pack 16h — Coaching approfondi",
+        title: "Pack 16h — Coaching",
         price: "944 €",
         rate: "soit 59 €/h",
-        description:
-          "Pour un suivi long sur une période clé : préparation du brevet ou du bac, reprise en profondeur des méthodes, ou accompagnement sur un trimestre entier.",
+        // Conservé : "En plus du bilan et du plan d'action, un accompagnement de long terme..."
+        description: "",
+        includes: [
+          "*Bilan approfondi* des méthodes de travail de l'élève : observation et identification de ce qui bloque, diagnostic clair des axes de progression.",
+          "*Construction d'un plan d'action* personnalisé : des étapes concrètes, des outils adaptés, et une stratégie claire pour changer ses habitudes de travail.",
+          "*Accompagnement de long terme* en profondeur : entraîner les nouvelles méthodes, suivre les progrès, et répondre à un besoin structurel sur plusieurs mois.",
+        ],
         idealFor: "Un besoin structurel, une préparation d'examen exigeante, un suivi sur plusieurs mois.",
         cta: { label: "Choisir le pack 16h", href: "/contact?offre=accompagnement-personnalise&pack=16h" },
         accent: "yellow" as const,

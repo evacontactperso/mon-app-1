@@ -105,8 +105,8 @@ export function AgendaProposalTourneePlus({
           const tone = TONES[index % TONES.length];
           return (
             <li key={week.weekend} className="relative py-9 last:pb-0 md:py-11">
-              <div className="grid grid-cols-[2.5rem_1fr] items-start gap-x-4 md:grid-cols-[3rem_minmax(10.5rem,auto)_1fr] md:items-center md:gap-x-8">
-                <div className="relative z-10 flex justify-center pt-1 md:pt-0">
+              <div className="grid grid-cols-[2.5rem_minmax(0,1fr)] items-start gap-x-4 md:grid-cols-[3rem_minmax(0,1fr)] md:gap-x-8">
+                <div className="relative z-10 flex justify-center pt-1">
                   <span
                     className="flex h-9 w-9 items-center justify-center rounded-full text-[11px] font-extrabold text-white md:h-11 md:w-11 md:text-xs"
                     style={{
@@ -118,26 +118,26 @@ export function AgendaProposalTourneePlus({
                   </span>
                 </div>
 
-                <div className="min-w-0">
-                  <p className="flex flex-wrap items-baseline gap-x-2 font-[family-name:var(--font-heading)] leading-none tracking-tight">
-                    <span className="text-base font-semibold uppercase tracking-normal text-white/65 md:text-lg">
+                <div className="grid min-w-0 grid-cols-1 items-baseline gap-y-3 sm:grid-cols-[15rem_minmax(0,1fr)] sm:gap-x-6 md:grid-cols-[16.5rem_minmax(0,1fr)] md:gap-x-8">
+                  <p className="flex flex-nowrap items-baseline gap-x-2 whitespace-nowrap font-[family-name:var(--font-heading)] leading-none tracking-tight">
+                    <span className="text-sm font-semibold uppercase tracking-[0.14em] text-white/65 md:text-base">
                       WK
                     </span>
                     <span className="text-2xl font-extrabold text-white md:text-[1.75rem]">
                       {date.range}
                     </span>
-                    <span className="text-base font-semibold capitalize tracking-normal text-white/65 md:text-lg">
+                    <span className="text-sm font-semibold capitalize text-white/65 md:text-base">
                       {date.month.toLowerCase()}
                     </span>
                   </p>
-                </div>
 
-                <h3 className="col-start-2 mt-3 min-w-0 text-xl font-extrabold leading-snug text-white md:col-start-3 md:mt-0 md:text-2xl">
-                  {week.theme}
-                </h3>
+                  <h3 className="min-w-0 text-xl font-extrabold leading-snug text-white md:text-2xl">
+                    {week.theme}
+                  </h3>
+                </div>
               </div>
 
-              <div className="mt-5 space-y-4 pl-[calc(2.5rem+0.75rem)] sm:pl-[calc(2.5rem+1rem)] md:pl-[calc(3rem+2.5rem)]">
+              <div className="mt-5 space-y-4 pl-[calc(2.5rem+1rem)] md:pl-[calc(3rem+2rem)]">
                 <FieldBlock label={rowLabels.skills} text={week.skills} />
                 <FieldBlock label={rowLabels.activities} text={week.activities} />
                 <span

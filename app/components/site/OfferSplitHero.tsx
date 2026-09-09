@@ -150,7 +150,13 @@ export type OfferSplitHeroProps = {
   eyebrow: string;
   title: string;
   highlightWord?: string;
-  lead: string;
+  /**
+   * Sous-titre sous le gros titre — conservé pour restauration,
+   * mais masqué pour l’instant (SHOW_HERO_LEAD = false).
+   */
+  lead?: string;
+  /** Mots-clés / infos clés sous le titre (ex. stage : 5 jours · 10 heures). */
+  keywords?: string[];
   ctaPrimary: { label: string; href: string };
   ctaSecondary: { label: string; href: string };
   /** 0 = rose, 2 = jaune, 3 = bleu clair, 4 = bleu-violet foncé */
@@ -162,11 +168,18 @@ export type OfferSplitHeroProps = {
   titleMaxCh?: number;
 };
 
+/** Remettre à true pour réafficher les sous-titres sous le h1 des heroes. */
+const SHOW_HERO_LEAD = false;
+
+/** Remettre à true pour réafficher les boutons CTA sous le titre (section 1). */
+const SHOW_HERO_CTAS = false;
+
 export default function OfferSplitHero({
   eyebrow,
   title,
   highlightWord,
   lead,
+  keywords,
   ctaPrimary,
   ctaSecondary,
   accent = "yellow",
@@ -203,23 +216,43 @@ export default function OfferSplitHero({
           >
             {renderHighlighted(title, highlightWord, accent)}
           </h1>
-          <p
-            className={`mx-auto mt-4 text-[15px] leading-relaxed text-[#515154] sm:mt-5 sm:text-base md:text-lg ${
-              lead.includes("\n")
-                ? "max-w-[68ch] whitespace-pre-line"
-                : "max-w-[42ch] text-balance"
-            }`}
-          >
-            {lead}
-          </p>
-          <div className="mt-8 flex w-full flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-4">
-            <Button href={ctaPrimary.href} variant="parent" className="w-full sm:w-auto">
-              {ctaPrimary.label}
-            </Button>
-            <Button href={ctaSecondary.href} variant="parentOutline" className="w-full sm:w-auto">
-              {ctaSecondary.label}
-            </Button>
-          </div>
+          {keywords && keywords.length > 0 ? (
+            <p
+              className={`mx-auto mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-bold uppercase tracking-[0.18em] sm:mt-6 md:text-xs ${theme.text}`}
+            >
+              {keywords.map((keyword, index) => (
+                <span key={keyword} className="inline-flex items-center gap-x-3">
+                  {index > 0 ? (
+                    <span className="text-[0.55em] font-medium tracking-normal opacity-70" aria-hidden>
+                      ●
+                    </span>
+                  ) : null}
+                  <span>{keyword}</span>
+                </span>
+              ))}
+            </p>
+          ) : null}
+          {SHOW_HERO_LEAD && lead ? (
+            <p
+              className={`mx-auto mt-4 text-[15px] leading-relaxed text-[#515154] sm:mt-5 sm:text-base md:text-lg ${
+                lead.includes("\n")
+                  ? "max-w-[68ch] whitespace-pre-line"
+                  : "max-w-[42ch] text-balance"
+              }`}
+            >
+              {lead}
+            </p>
+          ) : null}
+          {SHOW_HERO_CTAS ? (
+            <div className="mt-8 flex w-full flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:items-center sm:gap-4">
+              <Button href={ctaPrimary.href} variant="parent" className="w-full sm:w-auto">
+                {ctaPrimary.label}
+              </Button>
+              <Button href={ctaSecondary.href} variant="parentOutline" className="w-full sm:w-auto">
+                {ctaSecondary.label}
+              </Button>
+            </div>
+          ) : null}
         </div>
       </div>
       <ColorStripe color={theme.solid} />

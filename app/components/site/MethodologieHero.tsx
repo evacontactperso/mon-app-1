@@ -3,7 +3,8 @@ import OfferSplitHero from "./OfferSplitHero";
 type MethodologieHeroProps = {
   title: string;
   highlightWord?: string;
-  lead: string;
+  /** Conservé pour restauration du sous-titre hero (masqué via OfferSplitHero). */
+  lead?: string;
   ctaPrimary: { label: string; href: string };
   ctaSecondary: { label: string; href: string };
 };

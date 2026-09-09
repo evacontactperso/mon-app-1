@@ -14,7 +14,8 @@ export const stageVacancesContent = {
     subtitle:
       "Pendant les vacances, votre enfant a enfin le temps de faire une pause, prendre du recul et repartir sur de meilleures bases",
     text: "Ce stage lui apprend à mieux s'organiser, faire des fiches utiles, mémoriser efficacement, s'entraîner avant les contrôles et se remettre au travail avec plus de clarté. En 5 jours, il repart avec des méthodes concrètes, des supports prêts à réutiliser et un plan de travail plus clair pour la rentrée.",
-    ctaPrimary: { label: "Inscrire mon enfant", href: "/contact?offre=stage-vacances" },
+    keywords: ["5 jours", "10 heures", "max. 5 élèves"],
+    ctaPrimary: { label: "Contactez-moi pour l'inscription", href: "/contact?offre=stage-vacances" },
     ctaSecondary: { label: "Voir le programme", href: "#programme" },
   },
   program: {

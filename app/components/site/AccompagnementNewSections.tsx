@@ -287,12 +287,15 @@ export function CoachingFollowUpSection({
   cards,
   highlight = "suivi régulier",
   accent = "indigo",
+  /** Sous-textes des cartes — false pour les masquer (contenu conservé dans les data). */
+  showCardText = true,
 }: {
   title: string;
   subtitle: string;
   cards: { icon: string; title: string; text: string }[];
   highlight?: string;
   accent?: "indigo" | "pink" | "purple" | "warm";
+  showCardText?: boolean;
 }) {
   return (
     <PageSection tone="white" size="comfortable" innerClassName="mx-auto w-full max-w-[100rem] px-4 md:px-3">
@@ -320,9 +323,11 @@ export function CoachingFollowUpSection({
                 <h3 className="text-center text-sm font-bold leading-snug text-[#0B0B0B] lg:text-base">
                   {renderFollowUpTitle(card.title, cardAccent.emphasis)}
                 </h3>
-                <p className="mt-2 flex-1 text-center text-xs leading-relaxed text-[#515154] lg:text-sm">
-                  {card.text}
-                </p>
+                {showCardText ? (
+                  <p className="mt-2 flex-1 text-center text-xs leading-relaxed text-[#515154] lg:text-sm">
+                    {card.text}
+                  </p>
+                ) : null}
               </article>
             </div>
           );
@@ -345,9 +350,11 @@ export function CoachingFollowUpSection({
                 <h3 className="text-center text-base font-bold leading-snug text-[#0B0B0B]">
                   {renderFollowUpTitle(card.title, cardAccent.emphasis)}
                 </h3>
-                <p className="mt-2 text-center text-sm leading-relaxed text-[#515154]">
-                  {card.text}
-                </p>
+                {showCardText ? (
+                  <p className="mt-2 text-center text-sm leading-relaxed text-[#515154]">
+                    {card.text}
+                  </p>
+                ) : null}
               </article>
             </div>
           );
@@ -404,20 +411,29 @@ export function CoachingSessionsGridSection({
 /* ── Packs tarifaires ── */
 
 const packStyles = {
+  blue: {
+    border: "border-[#2ec8dc]/35",
+    bg: "from-[#ddf6f8]/70 via-white to-white",
+    button: "bg-[#2ec8dc] hover:bg-[#0891b2]",
+    ink: "#2ec8dc",
+  },
   pink: {
     border: "border-[#EE6B6E]/30",
     bg: "from-[#fde8e8]/60 via-white to-white",
     button: "bg-[#EE6B6E] hover:bg-[#E05558]",
+    ink: "#EE6B6E",
   },
   indigo: {
     border: "border-[#6366F1]/30",
     bg: "from-[#EEF2FF]/60 via-white to-white",
     button: "bg-[#6366F1] hover:bg-[#4F46E5]",
+    ink: "#6366F1",
   },
   yellow: {
     border: "border-[#fcaf45]/30",
     bg: "from-[#fff8e7]/80 via-white to-white",
     button: "bg-[#fcaf45] hover:bg-[#ea580c]",
+    ink: "#fcaf45",
   },
 };
 
@@ -426,12 +442,30 @@ type Pack = {
   title: string;
   price: string;
   rate: string;
+  /** Prix barré (ex. séance d'essai) */
+  originalPrice?: string;
+  /** Réduction affichée, ex. "-26 %" */
+  discountLabel?: string;
   description: string;
+  includes: string[];
   idealFor: string;
   cta: { label: string; href: string };
   accent: keyof typeof packStyles;
   featured?: boolean;
 };
+
+function renderPackEmphasis(text: string) {
+  return text.split(/(\*[^*]+\*)/g).map((part, index) => {
+    if (part.startsWith("*") && part.endsWith("*")) {
+      return (
+        <strong key={index} className="font-bold text-[#515154]">
+          {part.slice(1, -1)}
+        </strong>
+      );
+    }
+    return <span key={index}>{part}</span>;
+  });
+}
 
 export function CoachingPacksSection({
   id,
@@ -445,9 +479,9 @@ export function CoachingPacksSection({
   packs: Pack[];
 }) {
   return (
-    <PageSection id={id} tone="white" size="comfortable" innerClassName="mx-auto max-w-6xl px-4 md:px-6">
+    <PageSection id={id} tone="white" size="comfortable" innerClassName="mx-auto max-w-7xl px-4 md:px-6">
       <SectionHeader title={title} subtitle={subtitle} align="center" accent="pink" />
-      <div className="mt-12 grid gap-6 lg:grid-cols-3">
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
         {packs.map((pack) => {
           const style = packStyles[pack.accent];
           return (
@@ -467,15 +501,57 @@ export function CoachingPacksSection({
               <h3 className={`text-lg font-bold text-[#0B0B0B] ${pack.featured ? "mt-2" : ""}`}>
                 {pack.title}
               </h3>
-              <div className="mt-4 flex items-baseline gap-2">
+              <div className="mt-4 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
                 <span className="text-3xl font-extrabold text-[#0B0B0B]">{pack.price}</span>
-                <span className="text-sm text-[#515154]">{pack.rate}</span>
+                {pack.originalPrice ? (
+                  <>
+                    <span className="text-lg font-semibold text-[#8E8E93] line-through decoration-[#8E8E93]">
+                      {pack.originalPrice}
+                    </span>
+                    {pack.discountLabel ? (
+                      <span className="rounded-full bg-[#ecfdf5] px-2 py-0.5 text-xs font-bold text-[#059669] ring-1 ring-emerald-300/50">
+                        {pack.discountLabel}
+                      </span>
+                    ) : null}
+                  </>
+                ) : pack.rate ? (
+                  <span className="text-sm text-[#515154]">{pack.rate}</span>
+                ) : null}
               </div>
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-[#515154]">{pack.description}</p>
-              <p className="mt-4 text-sm text-[#0B0B0B]">
-                <span className="font-bold">Idéal pour : </span>
-                {pack.idealFor}
-              </p>
+              {pack.originalPrice && pack.rate ? (
+                <p className="mt-1 text-sm text-[#515154]">{pack.rate}</p>
+              ) : null}
+              {pack.description ? (
+                <p className="mt-4 text-sm leading-relaxed text-[#515154]">{pack.description}</p>
+              ) : null}
+              <ul className="mt-4 flex-1 space-y-2.5">
+                {pack.includes.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2 text-sm leading-relaxed text-[#515154]"
+                  >
+                    <span
+                      className="mt-1 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full"
+                      style={{ backgroundColor: style.ink }}
+                      aria-hidden
+                    >
+                      <svg
+                        viewBox="0 0 12 12"
+                        className="h-2 w-2"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M2.5 6.5L5 9l4.5-5.5" />
+                      </svg>
+                    </span>
+                    <span>{renderPackEmphasis(item)}</span>
+                  </li>
+                ))}
+              </ul>
+              {/* Conservé : Idéal pour — {pack.idealFor} */}
               <div className="mt-6 border-t border-slate-200/60 pt-5">
                 <Button
                   href={pack.cta.href}
@@ -498,7 +574,7 @@ export function CoachingInscriptionSection({
   title,
   subtitle,
   ctaPrimary,
-  ctaSecondary,
+  ctaSecondary: _ctaSecondary,
   footnote,
 }: {
   id?: string;
@@ -523,9 +599,7 @@ export function CoachingInscriptionSection({
         <Button href={ctaPrimary.href} variant="parent">
           {ctaPrimary.label}
         </Button>
-        <Button href={ctaSecondary.href} variant="parentOutline">
-          {ctaSecondary.label}
-        </Button>
+        {/* Conservé : ctaSecondary « Poser une question » / liens du même genre */}
       </div>
       <p className="mx-auto mt-8 max-w-2xl text-sm leading-relaxed text-[#515154] md:text-base">{footnote}</p>
     </PageSection>

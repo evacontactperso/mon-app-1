@@ -78,7 +78,7 @@ const PRICING = {
     "Cadre collectif motivant, sans coaching individuel",
     "Inscription aux séances selon ses besoins du moment",
   ],
-  ctaPrimary: { label: "Inscrire mon enfant", href: CTA_HREF },
+  ctaPrimary: { label: "Contactez-moi pour l'inscription", href: CTA_HREF },
   ctaSecondary: { label: "Une question ? Écrivez-nous", href: CTA_HREF },
   reassurance: "Confirmation par e-mail · Places limitées · Réponse rapide",
 } as const;
@@ -260,21 +260,12 @@ function PricingCard({ className = "" }: { className?: string }) {
           {PRICING.ctaPrimary.label}
         </Link>
 
-        <Link
-          href={PRICING.ctaSecondary.href}
-          className="mt-4 block text-center text-sm font-medium text-[#6366F1] underline-offset-4 transition hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366F1] focus-visible:ring-offset-2"
-        >
-          {PRICING.ctaSecondary.label}
-        </Link>
+        {/* Conservé : ctaSecondary « Une question ? Écrivez-nous » */}
 
-        <p className="mt-5 text-center text-[11px] leading-relaxed text-[#6b7280]">
-          {PRICING.reassurance}
-        </p>
+        {/* Conservé : {PRICING.reassurance} */}
       </div>
     </aside>
   );
-}
-
 }
 
 export default function InscriptionRendezVous() {

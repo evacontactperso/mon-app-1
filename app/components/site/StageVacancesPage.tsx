@@ -21,6 +21,7 @@ export default function StageVacancesPage() {
           title={c.hero.title}
           highlightWord="Une semaine"
           lead={c.hero.subtitle}
+          keywords={c.hero.keywords}
           ctaPrimary={c.hero.ctaPrimary}
           ctaSecondary={c.hero.ctaSecondary}
           accent="yellow"

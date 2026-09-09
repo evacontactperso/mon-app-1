@@ -189,12 +189,12 @@ export function StageProgramTableSection({
             return (
             <div key={`header-${day.day}`} className="flex items-center justify-center">
               <div
-                className={`flex h-20 w-20 flex-col items-center justify-center rounded-full border border-white/15 bg-gradient-to-br text-center shadow-[0_8px_32px_rgba(0,0,0,0.25)] ${col.header}`}
+                className={`flex h-24 w-24 flex-col items-center justify-center rounded-full border border-white/20 bg-gradient-to-br text-center shadow-[0_8px_32px_rgba(0,0,0,0.25)] ${col.header}`}
               >
-                <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-white/85">
+                <span className="text-xs font-extrabold uppercase tracking-[0.14em] text-white">
                   Jour
                 </span>
-                <span className="text-2xl font-extrabold leading-none text-white">{day.day}</span>
+                <span className="mt-0.5 text-2xl font-extrabold leading-none text-white">{day.day}</span>
               </div>
             </div>
             );
@@ -256,12 +256,12 @@ export function StageProgramTableSection({
             return (
             <div key={`header-md-${day.day}`} className="flex items-center justify-center">
               <div
-                className={`flex h-16 w-16 flex-col items-center justify-center rounded-full border border-white/15 bg-gradient-to-br text-center ${col.header}`}
+                className={`flex h-20 w-20 flex-col items-center justify-center rounded-full border border-white/20 bg-gradient-to-br text-center ${col.header}`}
               >
-                <span className="text-[8px] font-bold uppercase tracking-widest text-white/85">
+                <span className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-white">
                   Jour
                 </span>
-                <span className="text-xl font-extrabold leading-none text-white">{day.day}</span>
+                <span className="mt-0.5 text-xl font-extrabold leading-none text-white">{day.day}</span>
               </div>
             </div>
             );
@@ -319,12 +319,12 @@ export function StageProgramTableSection({
           >
             <div className="mb-4 flex items-center gap-3">
               <span
-                className={`flex h-14 w-14 flex-col items-center justify-center rounded-full bg-gradient-to-br text-white shadow-md ${col.header}`}
+                className={`flex h-16 w-16 flex-col items-center justify-center rounded-full bg-gradient-to-br text-white shadow-md ${col.header}`}
               >
-                <span className="text-[8px] font-bold uppercase tracking-wide text-white/85">
+                <span className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-white">
                   Jour
                 </span>
-                <span className="text-lg font-extrabold leading-none">{day.day}</span>
+                <span className="mt-0.5 text-lg font-extrabold leading-none">{day.day}</span>
               </span>
             </div>
             <div className="space-y-3">

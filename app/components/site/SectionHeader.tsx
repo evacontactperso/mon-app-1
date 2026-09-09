@@ -1,6 +1,12 @@
 export const sectionSubtitleClass =
   "mt-4 text-base leading-relaxed text-[#515154] sm:mt-5 sm:text-lg md:text-xl";
 
+/**
+ * Remettre à true pour réafficher les sous-titres sous les titres de section.
+ * Les textes restent passés en props / dans les fichiers de contenu.
+ */
+export const SHOW_SECTION_SUBTITLE = false;
+
 type SectionHeaderProps = {
   eyebrow?: string;
   title: string;
@@ -22,6 +28,8 @@ export function SectionSubtitle({
   align?: "left" | "center";
   className?: string;
 }) {
+  if (!SHOW_SECTION_SUBTITLE) return null;
+
   const alignClass = align === "center" ? "mx-auto text-center max-w-3xl" : "max-w-3xl";
   return (
     <p
@@ -122,11 +130,11 @@ export default function SectionHeader({
       >
         {renderTitle(title, highlight, accent)}
       </h2>
-      {subtitle && (
+      {SHOW_SECTION_SUBTITLE && subtitle ? (
         <SectionSubtitle dark={dark} align={align}>
           {subtitle}
         </SectionSubtitle>
-      )}
+      ) : null}
     </div>
   );
 }

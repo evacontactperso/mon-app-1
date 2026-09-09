@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Button from "./Button";
 import PageSection, { type SectionSize } from "./PageSection";
 import SectionHeader from "./SectionHeader";
@@ -103,12 +104,23 @@ export function MethodologieManifestoSection({
         </div>
       ) : null}
       <div
-        className={`space-y-6 font-body text-base leading-[1.85] text-[#515154] md:text-lg md:leading-[1.9] ${
+        className={`font-body text-base leading-[1.85] text-[#515154] md:text-lg md:leading-[1.9] ${
           hideTitle ? "" : "mt-2"
         }`}
       >
+        {/* Image à gauche (bloc rectangulaire) : décale le texte avec une marge droite droite, une seule colonne */}
+        <Image
+          src="/eva-portrait.jpg"
+          alt="Eva — fondatrice de L'Atelier des Méthodes"
+          width={293}
+          height={293}
+          priority
+          className="mx-auto mb-6 block h-[13.35rem] w-[13.35rem] rounded-full object-cover object-[center_22%] shadow-[0_12px_32px_rgba(15,23,42,0.12)] ring-4 ring-white md:float-left md:mx-0 md:mb-5 md:mr-8 md:h-[18.35rem] md:w-[18.35rem]"
+        />
         {paragraphs.map((p) => (
-          <p key={p.slice(0, 40)}>{renderParagraphWithBold(p, accent)}</p>
+          <p key={p.slice(0, 40)} className="mb-6 last:mb-0">
+            {renderParagraphWithBold(p, accent)}
+          </p>
         ))}
       </div>
     </>

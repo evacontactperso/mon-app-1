@@ -87,7 +87,8 @@ export function ContactProposalContactLeft() {
       <div className="relative mx-auto max-w-xl px-6">
         <SectionHeader
           title="Contact"
-          subtitle="Une question ? Écrivez-moi, je vous réponds rapidement."
+          // Sous-titre masqué temporairement — à remettre si besoin :
+          // subtitle="Une question ? Écrivez-moi, je vous réponds rapidement."
           align="center"
           accent="pink"
         />
