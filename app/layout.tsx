@@ -28,11 +28,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "L'Atelier des Méthodes — Méthode de travail pour collégiens et lycéens",
+    default: "Ma méthode - L'Atelier des méthodes",
     template: "%s | L'Atelier des Méthodes",
   },
   description:
     "Aider les collégiens et lycéens à se concentrer, s'organiser, faire leurs devoirs, réviser efficacement et gagner en autonomie — pour les familles.",
+  openGraph: {
+    title: "Ma méthode - L'Atelier des méthodes",
+    description:
+      "Aider les collégiens et lycéens à se concentrer, s'organiser, faire leurs devoirs, réviser efficacement et gagner en autonomie — pour les familles.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

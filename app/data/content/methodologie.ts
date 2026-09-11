@@ -1,5 +1,5 @@
 export const methodologieMeta = {
-  title: "Ma méthode — L'Atelier des Méthodes",
+  title: "Ma méthode - L'Atelier des méthodes",
   description:
     "Étudier, ça s'apprend. Une formation en méthodologie scolaire pour aider les collégiens et lycéens à s'organiser, réviser et gagner en autonomie.",
 };
