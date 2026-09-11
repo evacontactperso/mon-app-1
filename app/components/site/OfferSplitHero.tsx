@@ -159,7 +159,7 @@ export type OfferSplitHeroProps = {
   keywords?: string[];
   ctaPrimary: { label: string; href: string };
   ctaSecondary: { label: string; href: string };
-  /** 0 = rose, 2 = jaune, 3 = bleu clair, 4 = bleu-violet foncé */
+  /** Couleur section 1 : pink | indigo | yellow | blue (cycle 4 teintes) */
   accent?: SectionColor;
   /**
    * Largeur max du titre (en ch) pour forcer ~2 lignes de longueur proche.

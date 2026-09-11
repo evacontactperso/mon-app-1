@@ -14,7 +14,7 @@ export const stageVacancesContent = {
     subtitle:
       "Pendant les vacances, votre enfant a enfin le temps de faire une pause, prendre du recul et repartir sur de meilleures bases",
     text: "Ce stage lui apprend à mieux s'organiser, faire des fiches utiles, mémoriser efficacement, s'entraîner avant les contrôles et se remettre au travail avec plus de clarté. En 5 jours, il repart avec des méthodes concrètes, des supports prêts à réutiliser et un plan de travail plus clair pour la rentrée.",
-    keywords: ["5 jours", "10 heures", "max. 5 élèves"],
+    keywords: ["5 jours", "10 heures", "5 élèves max"],
     ctaPrimary: { label: "Contactez-moi pour l'inscription", href: "/contact?offre=stage-vacances" },
     ctaSecondary: { label: "Voir le programme", href: "#programme" },
   },
@@ -37,7 +37,7 @@ export const stageVacancesContent = {
           "*Organiser* ses *supports* de cours. *Planifier* sa semaine. *Anticiper* les contrôles.",
         activities:
           "Construire son *planning* de semaine. *Trier* ses devoirs par *priorité*. Préparer un *plan de révision* pour un contrôle.",
-        deliverable: "Un *planning* de travail *réaliste*.",
+        deliverable: "L'élève repart avec : un *planning* de travail *réaliste*.",
         color: "indigo" as const,
       },
       {
@@ -47,7 +47,7 @@ export const stageVacancesContent = {
           "Repérer *l'essentiel*. *Reformuler* avec ses mots. Construire différents types de *fiches*.",
         activities:
           "Transformer un cours en *fiche courte*. Créer une *fiche de méthode*. Faire une *fiche de correction* à partir d'une erreur.",
-        deliverable: "Une *fiche utile* et *réutilisable*.",
+        deliverable: "L'élève repart avec : une *fiche utile* et *réutilisable*.",
         color: "pink" as const,
       },
       {
@@ -57,7 +57,7 @@ export const stageVacancesContent = {
           "*Comprendre* avant d'apprendre. Utiliser des *techniques actives*. *Vérifier* que le cours est vraiment su.",
         activities:
           "Créer un *quiz* de révision. Tester la *récitation active*. Construire des *flashcards* ou un texte à trous.",
-        deliverable: "Une *méthode d'apprentissage active*.",
+        deliverable: "L'élève repart avec : une *méthode d'apprentissage active*.",
         color: "blue" as const,
       },
       {
@@ -67,7 +67,7 @@ export const stageVacancesContent = {
           "Choisir les *bons exercices*. S'entraîner dans les *conditions du contrôle*. *Corriger* ses erreurs.",
         activities:
           "Refaire un *exercice type*. S'entraîner avec un *temps limité*. *Analyser* une copie ou une correction.",
-        deliverable: "Une *stratégie d'entraînement*.",
+        deliverable: "L'élève repart avec : une *stratégie d'entraînement*.",
         color: "yellow" as const,
       },
       {
@@ -77,7 +77,7 @@ export const stageVacancesContent = {
           "*Démarrer* sans attendre la motivation. Limiter les *distractions*. Travailler par *blocs efficaces*.",
         activities:
           "Mettre en place une *routine* de démarrage. Créer son *environnement* de travail. Construire son *plan personnel* pour la rentrée.",
-        deliverable: "Un *plan personnel* de mise au travail.",
+        deliverable: "L'élève repart avec : un *plan personnel* de mise au travail.",
         color: "green" as const,
       },
     ],

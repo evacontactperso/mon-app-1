@@ -107,27 +107,27 @@ export const accompagnementPersonnaliseContent = {
     rows: [
       {
         problem: "Ne sait pas *quoi faire* le soir en rentrant",
-        solution: "Transformer chaque devoir en *petites tâches précises*.",
+        solution: "Transforme chaque devoir en *petites tâches précises*.",
       },
       {
         problem: "Repousse tout au *dernier moment*",
-        solution: "Construire un *planning hebdomadaire*.",
+        solution: "Construit un *planning hebdomadaire*.",
       },
       {
         problem: "Révise beaucoup, mais *retient peu*",
-        solution: "Remplacer la simple relecture par des *entraînements actifs*.",
+        solution: "Remplace la simple relecture par des *entraînements actifs*.",
       },
       {
         problem: "Se décourage après une *mauvaise note*",
-        solution: "Analyser la copie *sans jugement* et en tirer des apprentissages.",
+        solution: "Analyse la copie *sans jugement* et en tire des apprentissages.",
       },
       {
         problem: "Perd du temps à cause du *désordre*",
-        solution: "Créer un *système simple* pour ranger et retrouver les documents.",
+        solution: "Crée un *système simple* pour ranger et retrouver les documents.",
       },
       {
         problem: "A du mal à *se concentrer*",
-        solution: "Travailler par *blocs courts* et retirer les distractions.",
+        solution: "Travaille par *blocs courts* et retire les distractions.",
       },
     ],
   },
@@ -246,9 +246,10 @@ export const accompagnementPersonnaliseContent = {
     packs: [
       {
         slug: "seance-essai",
-        title: "Séance d'essai d'1h",
+        duration: "Séance d'1h",
+        title: "Séance d'essai",
         price: "59 €",
-        originalPrice: "80 €",
+        originalPrice: "79 €",
         discountLabel: "-26 %",
         rate: "",
         description: "",
@@ -264,19 +265,21 @@ export const accompagnementPersonnaliseContent = {
       },
       {
         slug: "pack-3h",
-        title: "Pack 3h — Bilan",
+        duration: "Pack 3h",
+        title: "Bilan approfondi",
         price: "237 €",
         rate: "soit 79 €/h",
         // Conservé : "Un bilan uniquement : on observe en profondeur..."
         description: "",
         includes: ["*Bilan approfondi* des habitudes de travail de l'élève : observation et identification de ce qui bloque, diagnostic clair des axes de progression."],
         idealFor: "Un besoin ponctuel, une difficulté ciblée, une remise à plat rapide.",
-        cta: { label: "Choisir le pack 3h", href: "/contact?offre=accompagnement-personnalise&pack=3h" },
+        cta: { label: "", href: "/contact?offre=accompagnement-personnalise&pack=3h" },
         accent: "pink" as const,
       },
       {
         slug: "pack-8h",
-        title: "Pack 8h — Plan d'action",
+        duration: "Pack 8h",
+        title: "Suivi personnalisé",
         price: "552 €",
         rate: "soit 69 €/h",
         // Conservé : "En plus du bilan, on construit ensemble un plan d'action..."
@@ -287,12 +290,13 @@ export const accompagnementPersonnaliseContent = {
         ],
         idealFor:
           "Brevet, bac, trimestre important, difficultés d'organisation installées, perte de confiance ou besoin d'autonomie.",
-        cta: { label: "Choisir le pack 8h", href: "/contact?offre=accompagnement-personnalise&pack=8h" },
+        cta: { label: "", href: "/contact?offre=accompagnement-personnalise&pack=8h" },
         accent: "indigo" as const,
       },
       {
         slug: "pack-16h",
-        title: "Pack 16h — Coaching",
+        duration: "Pack 16h",
+        title: "Coaching renforcé",
         price: "944 €",
         rate: "soit 59 €/h",
         // Conservé : "En plus du bilan et du plan d'action, un accompagnement de long terme..."
@@ -303,7 +307,7 @@ export const accompagnementPersonnaliseContent = {
           "*Accompagnement de long terme* en profondeur : entraîner les nouvelles méthodes, suivre les progrès, et répondre à un besoin structurel sur plusieurs mois.",
         ],
         idealFor: "Un besoin structurel, une préparation d'examen exigeante, un suivi sur plusieurs mois.",
-        cta: { label: "Choisir le pack 16h", href: "/contact?offre=accompagnement-personnalise&pack=16h" },
+        cta: { label: "", href: "/contact?offre=accompagnement-personnalise&pack=16h" },
         accent: "yellow" as const,
         featured: true,
       },

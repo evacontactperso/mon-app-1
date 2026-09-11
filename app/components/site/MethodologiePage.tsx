@@ -7,7 +7,15 @@ import {
   MethodologiePiliersCercleSection,
   MethodologieFormatsSection,
 } from "@/app/components/site/MethodologieSections";
+import {
+  sectionColorAt,
+  sectionHeaderAccent,
+} from "@/app/components/site/formation/FormationDesign";
 import { methodologieContent } from "@/app/data/content/methodologie";
+
+const PAGE = "methodologie" as const;
+const accentAt = (sectionIndex: number) =>
+  sectionHeaderAccent(sectionColorAt(PAGE, sectionIndex));
 
 export default function MethodologiePage() {
   const c = methodologieContent;
@@ -19,6 +27,7 @@ export default function MethodologiePage() {
           title={c.hero.title}
           highlightWord={c.hero.highlightWord}
           lead={c.hero.subtitle}
+          keywords={c.hero.keywords}
           ctaPrimary={c.hero.ctaPrimary}
           ctaSecondary={c.hero.ctaSecondary}
         />
@@ -26,7 +35,8 @@ export default function MethodologiePage() {
 
       <FadeIn>
         <MethodologieManifestoSection
-          themeColor="indigo"
+          page={PAGE}
+          sectionIndex={1}
           highlightWord={c.manifesto.highlightWord}
           title={c.manifesto.title}
           paragraphs={c.manifesto.paragraphs}
@@ -40,6 +50,7 @@ export default function MethodologiePage() {
           demandLabel={c.gap.demandLabel}
           gapLabel={c.gap.gapLabel}
           rows={c.gap.rows}
+          accent={accentAt(2)}
         />
       </FadeIn>
 
@@ -49,7 +60,7 @@ export default function MethodologiePage() {
           subtitle={c.consequences.subtitle}
           cards={c.consequences.cards}
           highlight="difficultés"
-          accent="warm"
+          accent="pink"
         />
       </FadeIn>
 
@@ -68,6 +79,9 @@ export default function MethodologiePage() {
           title={c.formats.title}
           subtitle={c.formats.subtitle}
           cards={c.formats.cards}
+          highlight="offres"
+          page={PAGE}
+          sectionIndex={5}
         />
       </FadeIn>
     </div>

@@ -1,5 +1,13 @@
 import PageSection from "./PageSection";
 import SectionHeader from "./SectionHeader";
+import {
+  sectionColorAt,
+  sectionHeaderAccent,
+} from "./formation/FormationDesign";
+
+const PAGE = "cours" as const;
+const accentAt = (sectionIndex: number) =>
+  sectionHeaderAccent(sectionColorAt(PAGE, sectionIndex));
 
 export type AgendaWeek = {
   weekend: string;
@@ -91,7 +99,7 @@ export function AgendaProposalTourneePlus({
         subtitle={subtitle}
         highlight={highlight}
         align="center"
-        accent="warm"
+        accent={accentAt(1)}
         dark
       />
 
@@ -148,7 +156,7 @@ export function AgendaProposalTourneePlus({
                     color: tone.glow,
                   }}
                 >
-                  {rowLabels.deliverable} · {stripStars(week.deliverable)}
+                  {stripStars(week.deliverable)}
                 </span>
               </div>
             </li>

@@ -9,6 +9,7 @@ export type SolutionsProposalProps = {
   problemLabel: string;
   solutionLabel: string;
   rows: SolutionRow[];
+  accent?: "indigo" | "pink" | "purple" | "warm" | "blue";
 };
 
 function Emph({
@@ -48,21 +49,22 @@ export function SolutionsProposalTickets({
   problemLabel,
   solutionLabel,
   rows,
+  accent = "pink",
 }: SolutionsProposalProps) {
   return (
     <PageSection tone="white" size="comfortable" innerClassName="mx-auto max-w-5xl px-4 md:px-6">
       <SectionHeader
         title={title}
         subtitle={subtitle}
-        highlight="méthodes concrètes"
+        highlight="méthodes"
         align="center"
-        accent="warm"
+        accent={accent}
       />
 
       <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-16">
         <div className="rounded-[28px] border border-[#E5E5EA] bg-white p-6 md:p-8">
           <h3 className="text-center text-lg font-normal text-[#0B0B0B]">{problemLabel}</h3>
-          <p className="mt-4 text-center text-sm font-semibold text-[#515154]">L&apos;élève&nbsp;:</p>
+          <p className="mt-4 text-left text-sm font-semibold text-[#515154]">L&apos;élève&nbsp;:</p>
           <ul className="mt-4 space-y-4">
             {rows.map((row) => (
               <li
@@ -89,7 +91,8 @@ export function SolutionsProposalTickets({
           }}
         >
           <h3 className="text-center text-lg font-bold text-[#fcaf45]">{solutionLabel}</h3>
-          <ul className="mt-6 space-y-5">
+          <p className="mt-4 text-left text-sm font-semibold text-[#fcaf45]">L&apos;élève&nbsp;:</p>
+          <ul className="mt-4 space-y-5">
             {rows.map((row) => (
               <li key={row.solution} className="flex items-start gap-3">
                 <span

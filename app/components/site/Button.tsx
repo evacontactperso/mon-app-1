@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 export type ButtonVariant =
   | "primary"
@@ -37,6 +37,7 @@ type ButtonProps = {
   className?: string;
   type?: "button" | "submit";
   onClick?: () => void;
+  style?: CSSProperties;
 };
 
 export default function Button({
@@ -46,20 +47,21 @@ export default function Button({
   className = "",
   type = "button",
   onClick,
+  style,
 }: ButtonProps) {
   const base =
     "inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EE6B6E]";
 
   if (href) {
     return (
-      <Link href={href} className={`${base} ${variants[variant]} ${className}`}>
+      <Link href={href} className={`${base} ${variants[variant]} ${className}`} style={style}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button type={type} onClick={onClick} className={`${base} ${variants[variant]} ${className}`}>
+    <button type={type} onClick={onClick} className={`${base} ${variants[variant]} ${className}`} style={style}>
       {children}
     </button>
   );

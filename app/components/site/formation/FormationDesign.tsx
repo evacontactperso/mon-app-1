@@ -46,22 +46,27 @@ export function cardSurfaceForSection(tone: SectionTone, rounded = "rounded-[28p
   return `${rounded} border border-slate-200/70 bg-white shadow-sm`;
 }
 
-/** Ordre fixe : Rose → Indigo → Bleu → Jaune */
-export const SECTION_COLOR_ORDER = ["pink", "indigo", "blue", "yellow"] as const;
+/** Cycle de surlignage : Rose-rouge → Bleu-violet → Jaune → Bleu-turquoise */
+export const SECTION_COLOR_ORDER = ["pink", "indigo", "yellow", "blue"] as const;
 export type SectionColor = (typeof SECTION_COLOR_ORDER)[number];
+/** Couleurs hors cycle (accents manuels / pastilles ponctuelles) */
 export type BrandSectionColor = SectionColor | "purple" | "red";
 
 export const HIGHLIGHT_PILL_ORDER = SECTION_COLOR_ORDER;
 export type HighlightPillColor = SectionColor;
 
-/** Décalage de départ par page live (chaque page commence par une couleur différente) */
+/**
+ * Départ du cycle = page menu (1→4).
+ * Page 1 Ma méthode : rose-rouge · Page 2 Stages : jaune ·
+ * Page 3 Cours : bleu-turquoise · Page 4 Coaching : bleu-violet
+ */
 export const PAGE_HIGHLIGHT_OFFSET = {
-  formation: 0, // Rose
-  stages: 1, // Indigo
-  cours: 2, // Bleu
-  accompagnement: 3, // Jaune
-  contact: 0, // Rose (cycle)
-  methodologie: 0, // Rose
+  methodologie: 0, // Page 1 — rose-rouge
+  formation: 0, // même départ que page 1
+  stages: 2, // Page 2 — jaune
+  cours: 3, // Page 3 — bleu-turquoise
+  accompagnement: 1, // Page 4 — bleu-violet
+  contact: 0, // rose-rouge
 } as const;
 
 export type SitePage = keyof typeof PAGE_HIGHLIGHT_OFFSET;
@@ -79,12 +84,12 @@ export type SectionTint = { className: string; overlay?: string };
 export const SECTION_TINT_BY_COLOR: Record<SectionColor, SectionTint> = {
   pink: { className: "bg-gradient-to-br from-[#fde8e8]/55 via-white to-white" },
   indigo: { className: "bg-gradient-to-br from-[#EEF2FF]/45 via-white to-[#EEF2FF]/30" },
-  blue: { className: "bg-gradient-to-br from-[#ddf6f8]/45 via-white to-[#ddf6f8]/30" },
   yellow: {
     className: "bg-gradient-to-br from-[#fff8e7]/75 via-[#fffbf2] to-[#fef3e8]/40",
     overlay:
       "bg-[radial-gradient(ellipse_at_top,_rgba(252,175,69,0.14)_0%,_transparent_55%)]",
   },
+  blue: { className: "bg-gradient-to-br from-[#ddf6f8]/45 via-white to-[#ddf6f8]/30" },
 };
 
 export const SECTION_TINT_BY_PILL = SECTION_TINT_BY_COLOR;
@@ -114,16 +119,24 @@ export const sectionTintForPill = sectionTintForColor;
 export const SECTION_ACCENT_BG: Record<SectionColor, string> = {
   pink: "bg-[#EE6B6E]",
   indigo: "bg-[#6366F1]",
-  blue: "bg-[#2ec8dc]",
   yellow: "bg-[#fcaf45]",
+  blue: "bg-[#2ec8dc]",
 };
 
 export const SECTION_ACCENT_SOFT: Record<SectionColor, { bg: string; text: string }> = {
   pink: { bg: "bg-[#fde8e8]", text: "text-[#EE6B6E]" },
   indigo: { bg: "bg-[#EEF2FF]", text: "text-[#6366F1]" },
-  blue: { bg: "bg-[#ddf6f8]", text: "text-[#0891b2]" },
   yellow: { bg: "bg-[#fff8e7]", text: "text-[#b45309]" },
+  blue: { bg: "bg-[#ddf6f8]", text: "text-[#0891b2]" },
 };
+
+/** Mappe une couleur de cycle vers l’accent SectionHeader */
+export type SectionHeaderAccent = "pink" | "indigo" | "warm" | "blue" | "purple";
+
+export function sectionHeaderAccent(color: SectionColor): SectionHeaderAccent {
+  if (color === "yellow") return "warm";
+  return color;
+}
 
 export function cardSurfaceOnTintedBg(rounded = "rounded-[28px]"): string {
   return `${rounded} border border-slate-200/70 bg-white shadow-sm`;
@@ -170,9 +183,9 @@ const HIGHLIGHT_PILL_CLASS: Record<SectionColor, string> = {
   pink: "mx-1 inline-block rounded-full bg-[#EE6B6E] px-3 py-0.5 font-extrabold text-white md:px-4 md:py-1",
   indigo:
     "mx-1 inline-block rounded-full bg-[#6366F1] px-3 py-0.5 font-extrabold text-white md:px-4 md:py-1",
-  blue: "mx-1 inline-block rounded-full bg-[#2ec8dc] px-3 py-0.5 font-extrabold text-white md:px-4 md:py-1",
   yellow:
     "mx-1 inline-block rounded-full bg-[#fcaf45] px-3 py-0.5 font-extrabold text-white md:px-4 md:py-1",
+  blue: "mx-1 inline-block rounded-full bg-[#2ec8dc] px-3 py-0.5 font-extrabold text-white md:px-4 md:py-1",
 };
 
 export function HighlightPill({

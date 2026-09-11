@@ -44,7 +44,7 @@ export const coursHebdomadairesContent = {
           "*Organiser* ses *supports* de cours. Repérer les *attentes* des professeurs. Identifier les premières *habitudes* à installer.",
         activities:
           "Créer son *système de rangement* par matière. Faire l'*état des lieux* de ses supports. Construire sa *checklist* de rentrée.",
-        deliverable: "Une *checklist* de rentrée *personnalisée*.",
+        deliverable: "L'élève repart avec : une *checklist* de rentrée *personnalisée*.",
       },
       {
         weekend: "WK du 26-27 septembre",
@@ -53,7 +53,7 @@ export const coursHebdomadairesContent = {
           "*Lire* son agenda efficacement. *Prioriser* les tâches. *Répartir* le travail sur plusieurs jours.",
         activities:
           "Construire son *planning* de la semaine. Transformer les devoirs en *tâches précises*. Placer les *contrôles* et les *révisions* dans le temps.",
-        deliverable: "Un *planning hebdomadaire* réaliste.",
+        deliverable: "L'élève repart avec : un *planning hebdomadaire* réaliste.",
       },
       {
         weekend: "WK du 3-4 octobre",
@@ -62,7 +62,7 @@ export const coursHebdomadairesContent = {
           "Préparer son *espace de travail*. *Découper* une tâche difficile. Utiliser des *blocs de concentration*.",
         activities:
           "Préparer une *routine de démarrage* en 5 minutes. Découper une tâche *repoussée* en petites étapes. Tester une session *chronométrée*.",
-        deliverable: "Une *routine anti-procrastination*.",
+        deliverable: "L'élève repart avec : une *routine anti-procrastination*.",
       },
       {
         weekend: "WK du 10-11 octobre",
@@ -71,7 +71,7 @@ export const coursHebdomadairesContent = {
           "Clarifier le *programme* du contrôle. Alterner *apprentissage* et *entraînement*. Vérifier son *niveau réel* avant l'évaluation.",
         activities:
           "Construire un *plan de révision* sur 7 jours. Créer une liste des *notions à maîtriser*. Prévoir les *exercices* à refaire avant le contrôle.",
-        deliverable: "Un *plan de révision* pour contrôle.",
+        deliverable: "L'élève repart avec : un *plan de révision* pour contrôle.",
       },
       {
         weekend: "WK du 17-18 octobre",
@@ -80,7 +80,7 @@ export const coursHebdomadairesContent = {
           "Identifier les *types d'erreurs*. Comprendre ce qui a *bloqué*. Définir quoi *retravailler* concrètement.",
         activities:
           "*Analyser* une copie ou une correction. *Classer* ses erreurs par origine. Créer une *fiche de correction* réutilisable.",
-        deliverable: "Une *fiche de correction* personnelle.",
+        deliverable: "L'élève repart avec : une *fiche de correction* personnelle.",
       },
     ],
   },

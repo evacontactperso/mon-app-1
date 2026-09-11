@@ -5,6 +5,7 @@ type MethodologieHeroProps = {
   highlightWord?: string;
   /** Conservé pour restauration du sous-titre hero (masqué via OfferSplitHero). */
   lead?: string;
+  keywords?: string[];
   ctaPrimary: { label: string; href: string };
   ctaSecondary: { label: string; href: string };
 };
@@ -14,6 +15,7 @@ export default function MethodologieHero({
   title,
   highlightWord,
   lead,
+  keywords,
   ctaPrimary,
   ctaSecondary,
 }: MethodologieHeroProps) {
@@ -23,6 +25,7 @@ export default function MethodologieHero({
       title={title}
       highlightWord={highlightWord}
       lead={lead}
+      keywords={keywords}
       ctaPrimary={ctaPrimary}
       ctaSecondary={ctaSecondary}
       accent="pink"

@@ -21,6 +21,7 @@ export type BilanSectionProps = {
     outcome: string;
   };
   rows: BilanRow[];
+  accent?: "indigo" | "pink" | "purple" | "warm" | "blue";
 };
 
 const TONES = [
@@ -240,6 +241,7 @@ export default function BilanDiagnosticMixSection({
   subtitle,
   columnLabels,
   rows,
+  accent = "warm",
 }: BilanSectionProps) {
   const [selected, setSelected] = useState(0);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
@@ -335,7 +337,7 @@ export default function BilanDiagnosticMixSection({
           subtitle={subtitle}
           highlight="diagnostic"
           align="center"
-          accent="warm"
+          accent={accent}
           dark
         />
 

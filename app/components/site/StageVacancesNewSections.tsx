@@ -1,6 +1,14 @@
 import PageSection from "./PageSection";
 import SectionHeader from "./SectionHeader";
 import TableCellContent from "./TableCellContent";
+import {
+  sectionColorAt,
+  sectionHeaderAccent,
+} from "./formation/FormationDesign";
+
+const PAGE = "stages" as const;
+const accentAt = (sectionIndex: number) =>
+  sectionHeaderAccent(sectionColorAt(PAGE, sectionIndex));
 
 type DayColor = "indigo" | "pink" | "blue" | "yellow" | "green";
 
@@ -89,6 +97,15 @@ const rowLabelTextClass =
 
 const themeCellStyle = "bg-transparent";
 
+/** En-tête de jour — texte blanc, sans contour */
+function DayBadge({ day }: { day: number }) {
+  return (
+    <span className="inline-flex max-w-full items-center justify-center whitespace-nowrap font-[family-name:var(--font-heading)] text-sm font-extrabold uppercase tracking-[0.12em] text-white lg:text-base">
+      {`Jour ${day}`}
+    </span>
+  );
+}
+
 function RowLabelCell({
   label,
   icon,
@@ -169,7 +186,7 @@ export function StageProgramTableSection({
         highlight="programme"
         dark
         align="center"
-        accent="pink"
+        accent="warm"
       />
 
       {/* Desktop : grille avec espacements */}
@@ -183,22 +200,12 @@ export function StageProgramTableSection({
           {/* Coin vide */}
           <div className="min-h-[3.5rem]" aria-hidden />
 
-          {/* En-têtes jours */}
-          {days.map((day, i) => {
-            const col = columnColorPalette[i % columnColorPalette.length];
-            return (
-            <div key={`header-${day.day}`} className="flex items-center justify-center">
-              <div
-                className={`flex h-24 w-24 flex-col items-center justify-center rounded-full border border-white/20 bg-gradient-to-br text-center shadow-[0_8px_32px_rgba(0,0,0,0.25)] ${col.header}`}
-              >
-                <span className="text-xs font-extrabold uppercase tracking-[0.14em] text-white">
-                  Jour
-                </span>
-                <span className="mt-0.5 text-2xl font-extrabold leading-none text-white">{day.day}</span>
-              </div>
+          {/* En-têtes jours — 5 formes N&B différentes */}
+          {days.map((day) => (
+            <div key={`header-${day.day}`} className="flex min-h-[3.5rem] items-center justify-center">
+              <DayBadge day={day.day} />
             </div>
-            );
-          })}
+          ))}
 
           {/* Lignes du programme */}
           {rowKeys.map((key) => (
@@ -251,21 +258,11 @@ export function StageProgramTableSection({
           }}
         >
           <div aria-hidden />
-          {days.map((day, i) => {
-            const col = columnColorPalette[i % columnColorPalette.length];
-            return (
-            <div key={`header-md-${day.day}`} className="flex items-center justify-center">
-              <div
-                className={`flex h-20 w-20 flex-col items-center justify-center rounded-full border border-white/20 bg-gradient-to-br text-center ${col.header}`}
-              >
-                <span className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-white">
-                  Jour
-                </span>
-                <span className="mt-0.5 text-xl font-extrabold leading-none text-white">{day.day}</span>
-              </div>
+          {days.map((day) => (
+            <div key={`header-md-${day.day}`} className="flex min-h-[3.25rem] items-center justify-center">
+              <DayBadge day={day.day} />
             </div>
-            );
-          })}
+          ))}
           {rowKeys.map((key) => (
               <div key={`md-${key}`} className="contents">
                 {key === "theme" ? (
@@ -317,15 +314,8 @@ export function StageProgramTableSection({
             key={day.day}
             className="overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm"
           >
-            <div className="mb-4 flex items-center gap-3">
-              <span
-                className={`flex h-16 w-16 flex-col items-center justify-center rounded-full bg-gradient-to-br text-white shadow-md ${col.header}`}
-              >
-                <span className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-white">
-                  Jour
-                </span>
-                <span className="mt-0.5 text-lg font-extrabold leading-none">{day.day}</span>
-              </span>
+            <div className="mb-4 flex items-center">
+              <DayBadge day={day.day} />
             </div>
             <div className="space-y-3">
               <div className={`px-4 py-4 ${themeCellStyle}`}>
@@ -432,7 +422,7 @@ export function StageFormatCardsSection({
         subtitle={subtitle}
         highlight="format intensif"
         align="center"
-        accent="indigo"
+        accent={accentAt(2)}
       />
 
       {/* Desktop : 5 cartes ; tablette : 2–3 colonnes */}
@@ -513,10 +503,13 @@ export function StageGainsSection({
       <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-16">
         <div className="rounded-[28px] border border-[#E5E5EA] bg-white p-6 md:p-8">
           <h3 className="text-center text-lg font-normal text-[#0B0B0B]">Avant le stage</h3>
-          <p className="mt-4 text-center text-sm font-semibold text-[#515154]">L&apos;élève&nbsp;:</p>
+          <p className="mt-4 text-left text-sm font-semibold text-[#515154]">L&apos;élève&nbsp;:</p>
           <ul className="mt-4 space-y-4">
             {rows.map((row) => (
-              <li key={row.before} className="flex items-start gap-3 text-sm leading-relaxed text-[#0B0B0B] md:text-base">
+              <li
+                key={row.before}
+                className="flex items-start gap-3 text-sm leading-relaxed text-[#0B0B0B] md:text-base"
+              >
                 <span
                   className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0B0B0B]"
                   aria-hidden
@@ -533,10 +526,13 @@ export function StageGainsSection({
           }}
         >
           <h3 className="text-center text-lg font-bold text-[#fcaf45]">Après le stage</h3>
-          <p className="mt-4 text-center text-sm font-semibold text-[#fcaf45]">L&apos;élève&nbsp;:</p>
+          <p className="mt-4 text-left text-sm font-semibold text-[#fcaf45]">L&apos;élève&nbsp;:</p>
           <ul className="mt-4 space-y-4">
             {rows.map((row) => (
-              <li key={row.after} className="flex items-start gap-3 text-sm leading-relaxed text-[#0B0B0B] md:text-base">
+              <li
+                key={row.after}
+                className="flex items-start gap-3 text-sm leading-relaxed text-[#0B0B0B] md:text-base"
+              >
                 <span
                   className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#fcaf45] shadow-[0_4px_12px_rgba(252,175,69,0.45)]"
                   aria-hidden

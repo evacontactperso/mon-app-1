@@ -9,6 +9,7 @@ export type GapProposalProps = {
   demandLabel: string;
   gapLabel: string;
   rows: GapRow[];
+  accent?: "indigo" | "pink" | "purple" | "warm" | "blue";
 };
 
 const TONES = [
@@ -42,14 +43,22 @@ function ProposalLabel({
   );
 }
 
-function Header({ title, subtitle }: { title: string; subtitle: string }) {
+function Header({
+  title,
+  subtitle,
+  accent = "warm",
+}: {
+  title: string;
+  subtitle: string;
+  accent?: "indigo" | "pink" | "purple" | "warm" | "blue";
+}) {
   return (
     <SectionHeader
       title={title}
       subtitle={subtitle}
       highlight="mode d'emploi"
       align="center"
-      accent="warm"
+      accent={accent}
     />
   );
 }
@@ -312,10 +321,10 @@ export function GapProposalSharedNumber(props: GapProposalProps) {
 /* ── Section active : deux colonnes (style « changements après le stage ») ── */
 
 export function GapProposalArrowBridge(props: GapProposalProps) {
-  const { title, subtitle, demandLabel, gapLabel, rows } = props;
+  const { title, subtitle, demandLabel, gapLabel, rows, accent } = props;
   return (
     <PageSection tone="white" size="comfortable" innerClassName="mx-auto max-w-5xl px-4 md:px-6">
-      <Header title={title} subtitle={subtitle} />
+      <Header title={title} subtitle={subtitle} accent={accent} />
 
       <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-16">
         <div className="rounded-[28px] border border-[#E5E5EA] bg-white p-6 md:p-8">

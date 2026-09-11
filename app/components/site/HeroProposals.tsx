@@ -42,15 +42,15 @@ export function leadMaxWidthCh(lead: string): number {
 const ACCENT_SOFT: Record<SectionColor, string> = {
   pink: "from-[#fde8e8]/70 via-white to-white",
   indigo: "from-[#EEF2FF]/70 via-white to-white",
-  blue: "from-[#ddf6f8]/70 via-white to-white",
   yellow: "from-[#fff8e7]/80 via-white to-white",
+  blue: "from-[#ddf6f8]/70 via-white to-white",
 };
 
 const ACCENT_SOLID: Record<SectionColor, string> = {
   pink: "bg-[#EE6B6E]",
   indigo: "bg-[#6366F1]",
-  blue: "bg-[#2ec8dc]",
   yellow: "bg-[#fcaf45]",
+  blue: "bg-[#2ec8dc]",
 };
 
 function TitleWithHighlight({
@@ -85,7 +85,7 @@ export default function HeroProposalAffiche({
   lead,
   ctaPrimary,
   ctaSecondary,
-  accent = "blue",
+  accent = "indigo",
 }: HeroAfficheProps) {
   return (
     <section
@@ -95,12 +95,12 @@ export default function HeroProposalAffiche({
         className="pointer-events-none absolute -left-20 top-10 h-64 w-64 rounded-full opacity-40 blur-3xl md:h-96 md:w-96"
         style={{
           background:
-            accent === "blue"
-              ? "#2ec8dc"
-              : accent === "pink"
-                ? "#EE6B6E"
-                : accent === "indigo"
-                  ? "#6366F1"
+            accent === "pink"
+              ? "#EE6B6E"
+              : accent === "indigo"
+                ? "#6366F1"
+                : accent === "blue"
+                  ? "#2ec8dc"
                   : "#fcaf45",
         }}
         aria-hidden

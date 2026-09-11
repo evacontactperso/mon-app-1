@@ -9,6 +9,7 @@ export const methodologieContent = {
     badge: "Apprendre à apprendre",
     highlightWord: "méthode",
     title: "Une méthode de travail\nqui change tout",
+    keywords: ["Organisation", "Concentration", "Autonomie"],
     subtitle:
       "On demande aux élèves de travailler. Mais on leur apprend rarement comment faire",
     shortText:

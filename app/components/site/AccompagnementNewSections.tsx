@@ -294,7 +294,7 @@ export function CoachingFollowUpSection({
   subtitle: string;
   cards: { icon: string; title: string; text: string }[];
   highlight?: string;
-  accent?: "indigo" | "pink" | "purple" | "warm";
+  accent?: "indigo" | "pink" | "purple" | "warm" | "blue";
   showCardText?: boolean;
 }) {
   return (
@@ -414,31 +414,42 @@ const packStyles = {
   blue: {
     border: "border-[#2ec8dc]/35",
     bg: "from-[#ddf6f8]/70 via-white to-white",
-    button: "bg-[#2ec8dc] hover:bg-[#0891b2]",
+    button:
+      "!bg-white !text-[#0B0B0B] !shadow-none ring-1 ring-[#2ec8dc]/40 hover:!bg-[#ddf6f8]/50 hover:ring-[#2ec8dc]/70 focus-visible:!outline-[#2ec8dc]",
     ink: "#2ec8dc",
+    soft: "#0891b2",
   },
   pink: {
     border: "border-[#EE6B6E]/30",
     bg: "from-[#fde8e8]/60 via-white to-white",
-    button: "bg-[#EE6B6E] hover:bg-[#E05558]",
+    button:
+      "!bg-white !text-[#0B0B0B] !shadow-none ring-1 ring-[#EE6B6E]/40 hover:!bg-[#fde8e8]/50 hover:ring-[#EE6B6E]/70 focus-visible:!outline-[#EE6B6E]",
     ink: "#EE6B6E",
+    soft: "#E05558",
   },
   indigo: {
     border: "border-[#6366F1]/30",
     bg: "from-[#EEF2FF]/60 via-white to-white",
-    button: "bg-[#6366F1] hover:bg-[#4F46E5]",
+    button:
+      "!bg-white !text-[#0B0B0B] !shadow-none ring-1 ring-[#6366F1]/40 hover:!bg-[#EEF2FF]/60 hover:ring-[#6366F1]/70 focus-visible:!outline-[#6366F1]",
     ink: "#6366F1",
+    soft: "#4F46E5",
   },
   yellow: {
     border: "border-[#fcaf45]/30",
     bg: "from-[#fff8e7]/80 via-white to-white",
-    button: "bg-[#fcaf45] hover:bg-[#ea580c]",
+    button:
+      "!bg-white !text-[#0B0B0B] !shadow-none ring-1 ring-[#fcaf45]/45 hover:!bg-[#fff8e7]/70 hover:ring-[#fcaf45]/80 focus-visible:!outline-[#fcaf45]",
     ink: "#fcaf45",
+    soft: "#b45309",
   },
 };
 
 type Pack = {
   slug: string;
+  /** Ligne 1 du titre : durée (ex. Pack 3h) */
+  duration: string;
+  /** Ligne 2 du titre : nom (ex. Bilan approfondi) */
   title: string;
   price: string;
   rate: string;
@@ -472,22 +483,32 @@ export function CoachingPacksSection({
   title,
   subtitle,
   packs,
+  accent = "warm",
+  highlight = "l'accompagnement",
 }: {
   id?: string;
   title: string;
   subtitle: string;
   packs: Pack[];
+  accent?: "indigo" | "pink" | "purple" | "warm" | "blue";
+  highlight?: string;
 }) {
   return (
     <PageSection id={id} tone="white" size="comfortable" innerClassName="mx-auto max-w-7xl px-4 md:px-6">
-      <SectionHeader title={title} subtitle={subtitle} align="center" accent="pink" />
+      <SectionHeader
+        title={title}
+        subtitle={subtitle}
+        highlight={highlight}
+        align="center"
+        accent={accent}
+      />
       <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
         {packs.map((pack) => {
           const style = packStyles[pack.accent];
           return (
             <article
               key={pack.slug}
-              className={`relative flex flex-col overflow-visible rounded-[28px] border bg-gradient-to-br p-6 shadow-[0_12px_40px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 ${style.border} ${style.bg} ${
+              className={`relative flex flex-col overflow-visible rounded-[28px] border bg-gradient-to-br p-6 text-center shadow-[0_12px_40px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 ${style.border} ${style.bg} ${
                 pack.featured
                   ? "border-[#fcaf45] ring-2 ring-[#fcaf45]/35 shadow-[0_16px_48px_rgba(252,175,69,0.2)]"
                   : ""
@@ -498,33 +519,14 @@ export function CoachingPacksSection({
                   Le plus complet
                 </span>
               )}
-              <h3 className={`text-lg font-bold text-[#0B0B0B] ${pack.featured ? "mt-2" : ""}`}>
-                {pack.title}
+              <h3 className={`text-lg font-bold leading-snug text-[#0B0B0B] ${pack.featured ? "mt-2" : ""}`}>
+                <span className="block">{pack.duration}</span>
+                <span className="mt-1 block text-base font-semibold text-[#515154]">{pack.title}</span>
               </h3>
-              <div className="mt-4 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-                <span className="text-3xl font-extrabold text-[#0B0B0B]">{pack.price}</span>
-                {pack.originalPrice ? (
-                  <>
-                    <span className="text-lg font-semibold text-[#8E8E93] line-through decoration-[#8E8E93]">
-                      {pack.originalPrice}
-                    </span>
-                    {pack.discountLabel ? (
-                      <span className="rounded-full bg-[#ecfdf5] px-2 py-0.5 text-xs font-bold text-[#059669] ring-1 ring-emerald-300/50">
-                        {pack.discountLabel}
-                      </span>
-                    ) : null}
-                  </>
-                ) : pack.rate ? (
-                  <span className="text-sm text-[#515154]">{pack.rate}</span>
-                ) : null}
-              </div>
-              {pack.originalPrice && pack.rate ? (
-                <p className="mt-1 text-sm text-[#515154]">{pack.rate}</p>
-              ) : null}
               {pack.description ? (
                 <p className="mt-4 text-sm leading-relaxed text-[#515154]">{pack.description}</p>
               ) : null}
-              <ul className="mt-4 flex-1 space-y-2.5">
+              <ul className="mt-4 flex-1 space-y-2.5 text-left">
                 {pack.includes.map((item) => (
                   <li
                     key={item}
@@ -555,11 +557,31 @@ export function CoachingPacksSection({
               <div className="mt-6 border-t border-slate-200/60 pt-5">
                 <Button
                   href={pack.cta.href}
-                  variant="primary"
-                  className={`w-full text-center text-sm text-white ${style.button}`}
+                  variant="secondary"
+                  className={`!inline-flex w-full !items-center justify-center rounded-2xl px-4 py-3.5 transition focus-visible:!outline-2 focus-visible:!outline-offset-2 ${style.button}`}
+                  style={{ outlineColor: style.ink }}
                 >
-                  {pack.cta.label}
+                  <span
+                    className="font-[family-name:var(--font-price)] text-xl font-bold leading-none tracking-tight"
+                    style={{ color: style.ink }}
+                  >
+                    {pack.price}
+                  </span>
                 </Button>
+                {pack.originalPrice ? (
+                  <p className="mt-2 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm">
+                    <span className="font-medium text-[#8E8E93] line-through decoration-[#8E8E93]">
+                      {pack.originalPrice}
+                    </span>
+                    {pack.discountLabel ? (
+                      <span className="rounded-full bg-[#ecfdf5] px-2 py-0.5 text-xs font-bold text-[#059669] ring-1 ring-emerald-300/40">
+                        {pack.discountLabel}
+                      </span>
+                    ) : null}
+                  </p>
+                ) : pack.rate ? (
+                  <p className="mt-2 text-sm font-medium text-[#8E8E93]">{pack.rate}</p>
+                ) : null}
               </div>
             </article>
           );

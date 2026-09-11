@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
+import SectionHeader from "./SectionHeader";
 
 const CTA_HREF = "/contact?offre=cours-hebdomadaires";
 
@@ -270,7 +271,6 @@ function PricingCard({ className = "" }: { className?: string }) {
 
 export default function InscriptionRendezVous() {
   const reducedMotion = usePrefersReducedMotion();
-  const [line1, line2] = SECTION.title.split("\n");
 
   return (
     <section
@@ -278,23 +278,16 @@ export default function InscriptionRendezVous() {
       aria-labelledby="inscription-title"
       className="relative bg-[#FAF8F5] py-24 md:py-32"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(46,200,220,0.08)_0%,_transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(252,175,69,0.08)_0%,_transparent_55%)]" />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-        <div id="inscription-title" className="mx-auto max-w-4xl text-center">
-          <h2 className="mt-4 font-bold leading-[1.2] tracking-tight text-[#0B0B0B]">
-            <span className="block text-[clamp(1.15rem,5vw,2.65rem)]">
-              <span className="mx-1 inline-block rounded-full bg-[#EE6B6E] px-2.5 py-0.5 font-extrabold text-white md:px-4 md:py-1">
-                Inscription
-              </span>{" "}
-              {line1.replace(/^Inscription\s*/, "")}
-            </span>
-            {line2 ? (
-              <span className="mt-1 block text-[clamp(1.15rem,5vw,2.65rem)]">{line2}</span>
-            ) : null}
-          </h2>
-          <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-[#515154] md:text-xl">
-            {SECTION.subtitle}
-          </p>
+        <div id="inscription-title">
+          <SectionHeader
+            title={SECTION.title}
+            subtitle={SECTION.subtitle}
+            highlight="Inscription"
+            align="center"
+            accent="pink"
+          />
         </div>
 
         <div className="mt-14 grid items-stretch gap-10 lg:grid-cols-12">

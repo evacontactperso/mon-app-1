@@ -14,7 +14,7 @@ type SectionHeaderProps = {
   highlight?: string;
   align?: "left" | "center";
   dark?: boolean;
-  accent?: "indigo" | "pink" | "purple" | "warm";
+  accent?: "indigo" | "pink" | "purple" | "warm" | "blue";
 };
 
 export function SectionSubtitle({
@@ -47,6 +47,7 @@ const accentColors = {
   pink: { eyebrow: "bg-[#fde8e8] text-[#EE6B6E]", line: "from-[#EE6B6E] to-[#f58529]" },
   purple: { eyebrow: "bg-[#f3e5f5] text-[#8134af]", line: "from-[#8134af] to-[#6366F1]" },
   warm: { eyebrow: "bg-[#fef3e8] text-[#c2410c]", line: "from-[#f58529] via-[#EE6B6E] to-[#8134af]" },
+  blue: { eyebrow: "bg-[#ddf6f8] text-[#0891b2]", line: "from-[#2ec8dc] to-[#6366F1]" },
 };
 
 const highlightPillClass = {
@@ -54,6 +55,7 @@ const highlightPillClass = {
   pink: "mx-1 inline-block rounded-full bg-[#EE6B6E] px-3 py-0.5 font-extrabold text-white md:px-4 md:py-1",
   purple: "mx-1 inline-block rounded-full bg-[#8134af] px-3 py-0.5 font-extrabold text-white md:px-4 md:py-1",
   warm: "mx-1 inline-block rounded-full bg-[#fcaf45] px-3 py-0.5 font-extrabold text-white md:px-4 md:py-1",
+  blue: "mx-1 inline-block rounded-full bg-[#2ec8dc] px-3 py-0.5 font-extrabold text-white md:px-4 md:py-1",
 };
 
 function normalizeApostrophes(value: string) {

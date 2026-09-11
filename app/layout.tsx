@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Source_Sans_3, Geist_Mono } from "next/font/google";
+import { Albert_Sans, Plus_Jakarta_Sans, Source_Sans_3, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SupabaseProvider } from "../components/SupabaseProvider";
 
@@ -13,6 +13,12 @@ const fontBody = Source_Sans_3({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const fontPrice = Albert_Sans({
+  variable: "--font-price",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -37,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${fontHeading.variable} ${fontBody.variable} ${geistMono.variable} antialiased`}
+        className={`${fontHeading.variable} ${fontBody.variable} ${fontPrice.variable} ${geistMono.variable} antialiased`}
       >
         <SupabaseProvider>{children}</SupabaseProvider>
       </body>

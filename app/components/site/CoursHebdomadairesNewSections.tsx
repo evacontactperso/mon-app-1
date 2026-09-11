@@ -2,6 +2,14 @@ import Button from "./Button";
 import PageSection from "./PageSection";
 import SectionHeader from "./SectionHeader";
 import TableCellContent from "./TableCellContent";
+import {
+  sectionColorAt,
+  sectionHeaderAccent,
+} from "./formation/FormationDesign";
+
+const PAGE = "cours" as const;
+const accentAt = (sectionIndex: number) =>
+  sectionHeaderAccent(sectionColorAt(PAGE, sectionIndex));
 
 /* ── Tableau agenda (fond noir, même design que le programme stage) ── */
 
@@ -452,7 +460,7 @@ export function WeeklyWhyCardsSection({
         subtitle={subtitle}
         highlight="habitudes"
         align="center"
-        accent="pink"
+        accent={accentAt(2)}
       />
 
       <div className="mt-14 hidden gap-3 md:grid md:grid-cols-2 md:gap-4 lg:grid-cols-3 xl:grid-cols-5">

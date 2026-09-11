@@ -639,28 +639,34 @@ type FormatCard = {
 
 const formatAccent: Record<
   AccentColor,
-  { border: string; bg: string; iconBg: string; bullet: string; button: string }
+  { border: string; bg: string; iconBg: string; bullet: string; button: string; ink: string }
 > = {
   indigo: {
     border: "border-[#6366F1]/30",
     bg: "from-[#EEF2FF]/80 via-white to-[#E0E7FF]/40",
     iconBg: "from-[#EEF2FF] to-[#C7D2FE]",
-    bullet: "bg-[#6366F1]",
-    button: "bg-[#6366F1] hover:bg-[#4F46E5]",
+    bullet: "bg-[#EEF2FF] text-[#6366F1] ring-1 ring-[#6366F1]/25",
+    button:
+      "!border !border-[#6366F1]/40 !bg-white !text-[#6366F1] !shadow-none hover:!border-[#6366F1] hover:!bg-[#EEF2FF]/60 focus-visible:!outline-[#6366F1]",
+    ink: "#6366F1",
   },
   pink: {
     border: "border-[#EE6B6E]/30",
     bg: "from-[#fde8e8]/60 via-white to-[#fef3e8]/50",
     iconBg: "from-[#fde8e8] to-[#fbcfe8]",
-    bullet: "bg-[#EE6B6E]",
-    button: "bg-[#EE6B6E] hover:bg-[#E05558]",
+    bullet: "bg-[#fde8e8] text-[#EE6B6E] ring-1 ring-[#EE6B6E]/25",
+    button:
+      "!border !border-[#EE6B6E]/40 !bg-white !text-[#EE6B6E] !shadow-none hover:!border-[#EE6B6E] hover:!bg-[#fde8e8]/50 focus-visible:!outline-[#EE6B6E]",
+    ink: "#EE6B6E",
   },
   orange: {
     border: "border-[#f58529]/30",
     bg: "from-[#fef3e8]/80 via-white to-[#fff8e7]/50",
     iconBg: "from-[#fef3e8] to-[#fed7aa]",
-    bullet: "bg-[#f58529]",
-    button: "bg-[#f58529] hover:bg-[#ea580c]",
+    bullet: "bg-[#fff8e7] text-[#b45309] ring-1 ring-[#fcaf45]/35",
+    button:
+      "!border !border-[#b45309]/40 !bg-white !text-[#b45309] !shadow-none hover:!border-[#b45309] hover:!bg-[#fff8e7]/70 focus-visible:!outline-[#b45309]",
+    ink: "#b45309",
   },
 };
 
@@ -721,7 +727,7 @@ export function MethodologieFormatsSection({
                   {card.bullets.map((bullet) => (
                     <li key={bullet} className="flex items-start gap-2 text-sm text-[#515154]">
                       <span
-                        className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white ${accent.bullet}`}
+                        className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${accent.bullet}`}
                       >
                         ✓
                       </span>
@@ -731,7 +737,12 @@ export function MethodologieFormatsSection({
                 </ul>
               </div>
               <div className="mt-6 border-t border-slate-200/60 pt-5">
-                <Button href={card.cta.href} variant="parent" className="w-full text-center text-sm">
+                <Button
+                  href={card.cta.href}
+                  variant="secondary"
+                  className={`w-full rounded-2xl text-center text-sm font-semibold transition focus-visible:!outline-2 focus-visible:!outline-offset-2 ${accent.button}`}
+                  style={{ outlineColor: accent.ink }}
+                >
                   {card.cta.label}
                 </Button>
               </div>

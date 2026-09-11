@@ -8,7 +8,15 @@ import {
   CoachingFollowUpSection,
   CoachingPacksSection,
 } from "@/app/components/site/AccompagnementNewSections";
+import {
+  sectionColorAt,
+  sectionHeaderAccent,
+} from "@/app/components/site/formation/FormationDesign";
 import { accompagnementPersonnaliseContent } from "@/app/data/content/accompagnement-personnalise";
+
+const PAGE = "accompagnement" as const;
+const accentAt = (sectionIndex: number) =>
+  sectionHeaderAccent(sectionColorAt(PAGE, sectionIndex));
 
 export default function AccompagnementPersonnalisePage() {
   const c = accompagnementPersonnaliseContent;
@@ -32,6 +40,7 @@ export default function AccompagnementPersonnalisePage() {
           subtitle={c.bilan.subtitle}
           columnLabels={c.bilan.columnLabels}
           rows={c.bilan.rows}
+          accent={accentAt(1)}
         />
       </FadeIn>
 
@@ -42,6 +51,7 @@ export default function AccompagnementPersonnalisePage() {
           problemLabel={c.solutions.problemLabel}
           solutionLabel={c.solutions.solutionLabel}
           rows={c.solutions.rows}
+          accent="warm"
         />
       </FadeIn>
 
@@ -50,6 +60,7 @@ export default function AccompagnementPersonnalisePage() {
           title={c.followUp.title}
           subtitle={c.followUp.subtitle}
           cards={c.followUp.cards}
+          accent={accentAt(3)}
         />
       </FadeIn>
 
@@ -59,6 +70,7 @@ export default function AccompagnementPersonnalisePage() {
           title={c.pricing.title}
           subtitle={c.pricing.subtitle}
           packs={c.pricing.packs}
+          accent={accentAt(4)}
         />
       </FadeIn>
     </div>
